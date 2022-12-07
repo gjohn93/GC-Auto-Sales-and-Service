@@ -21,7 +21,7 @@ def get_automobiles():
             color=automobile["color"],
             year=automobile["year"],
             vin=automobile["vin"],
-            model=automobile["model"]
+            model=automobile["model"]["name"]
         )
 
 def get_sales_record():
