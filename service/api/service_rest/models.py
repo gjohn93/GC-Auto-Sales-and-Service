@@ -4,7 +4,7 @@ from django.urls import reverse
 
 class Technician(models.Model):
     name = models.CharField(max_length = 200)
-    employee_number = models.PositiveSmallIntegerField()
+    employee_number = models.PositiveSmallIntegerField(unique=True)
 
     def get_api_url(self):
         return reverse("api_technician", kwargs={"pk": self.pk})
@@ -31,7 +31,7 @@ class AutomobileVO(models.Model):
         return f"{self.model}, {self.vin}"
 
 class ServiceAppointment(models.Model):
-    owner = models.CharField(max_length=150)
+    customer_name = models.CharField(max_length=150)
     date_time = models.DateTimeField()
     description = models.TextField()
     VIP_treatment = models.BooleanField(default=False)
