@@ -32,9 +32,9 @@ def api_sales_records(request, sales_person_employee_number=None):
             name = content["customer"]
             name =Customer.objects.get(name=name)
             content["customer"] = name
-            vin = content["automobile"]
+            vin = content["vin"]
             vin = AutomobileVO.objects.get(vin=vin)
-            content["automobile"] = vin
+            content["vin"] = vin
             sales_record = SalesRecord.objects.create(**content)
             return JsonResponse(
                 sales_record,

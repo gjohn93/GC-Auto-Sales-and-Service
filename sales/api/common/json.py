@@ -10,7 +10,6 @@ class DecimalEncoder(JSONEncoder):
             return str(o)
         return super().default(o)
 
-
 class DateEncoder(JSONEncoder):
     def default(self, o):
         if isinstance(o, datetime):
@@ -27,7 +26,7 @@ class QuerySetEncoder(JSONEncoder):
             return super().default(o)
 
 
-class ModelEncoder(DecimalEncoder, DateEncoder, QuerySetEncoder, JSONEncoder):
+class ModelEncoder(DateEncoder, QuerySetEncoder, JSONEncoder):
     encoders = {}
 
     def default(self, o):

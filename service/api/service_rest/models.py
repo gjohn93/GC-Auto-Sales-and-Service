@@ -34,7 +34,12 @@ class ServiceAppointment(models.Model):
     customer_name = models.CharField(max_length=150)
     date_time = models.DateTimeField()
     description = models.TextField()
-    VIP_treatment = models.BooleanField(default=False)
+    VIP = models.BooleanField(default=False)
+    VIN = models.CharField(max_length=17)
+    model = models.CharField(max_length=150)
+    make = models.CharField(max_length=150)
+    color = models.CharField(max_length=100)
+    year = models.SmallIntegerField()
 
     technician = models.ForeignKey(
         Technician,
@@ -42,20 +47,8 @@ class ServiceAppointment(models.Model):
         on_delete = models.PROTECT,
     )
 
-    sales_record = models.ForeignKey(
-        SalesRecordVO,
-        related_name = "appointments",
-        on_delete= models.PROTECT,
-    )
-
-    automobile = models.ForeignKey(
-        AutomobileVO,
-        related_name = "appointments",
-        on_delete=models.CASCADE,
-    )
-
     def get_api_url(self):
         return reverse("api_service_appointment", kwargs={"pk": self.pk})
 
     def __str__(self):
-        return f"{self.owner}, {self.automobile}"
+        return f"{self.technician.name}, {self.VIN}, {self.id}"
