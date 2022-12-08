@@ -1,26 +1,27 @@
 import {useState, useEffect} from 'react';
 
-function ServiceList(props) {
-  console.log(props)
-  const [service_appointments, setShoes] = useState([])
+function ServiceList() {
+  const [service_app, setServiceAppointment] = useState([])
 
   const getData = async () => {
     const resp = await fetch('http://localhost:8080/api/service_appointments/')
     const data = await resp.json()
-    setShoes(data)
+    setServiceAppointment(data.service_appointment)
+    console.log(data.service_appointment)
   }
+  console.log(service_app)
 
   const handleDelete = async (id) => {
-    const resp = await fetch(`http://localhost:8080/api/service_appointment/${id}`, { method:"DELETE"})
+    const resp = await fetch(`http://localhost:8080/api/service/${id}`, { method:"DELETE"})
     const data = await resp.json()
     getData()
     window.location = "/service"
   }
 
-  const vinData = async () => {
-    const vinResp = await fetch('`http://localhost:8080/api/service_appointments/${VIN}`')
-    const data = await vinResp.json()
-    getData()
+  const vinData = async (VIN) => {
+    const vinResp = await fetch(`http://localhost:8080/api/service_appointments/${VIN}`)
+    const vdata = await vinResp.json()
+    vinData()
     window.location = '/service'
   }
 
@@ -33,6 +34,7 @@ function ServiceList(props) {
         <table className="table table-hover table-striped">
           <thead className= "text-center">
             <tr>
+              <th>VIP</th>
               <th>Customer Name</th>
               <th>Date/Time</th>
               <th>Description</th>
@@ -42,32 +44,31 @@ function ServiceList(props) {
               <th>Color</th>
               <th>Technician</th>
               <th>VIN</th>
+              <th>Actions</th>
             </tr>
           </thead>
           <tbody className= "text-center">
-          {props.service_appointments?.map(appointment => {
+          {
+          service_app.map(service=>{
           return (
-            <tr className = "align-middle" key={appointment.id}>
-              <td>{appointment.customer_name }</td>
-              <td>{appointment.date_time }</td>
-              <td>{appointment.description }</td>
-              <td>{appointment.model }</td>
-              <td>{appointment.make }</td>
-              <td>{appointment.year }</td>
-              <td>{appointment.color }</td>
-              <td>{appointment.technician }</td>
-              <td>{appointment.VIN }</td>
-              {/* <td>
-                <div>
-                  <img src={shoe.picture_url} className="rounded mx-auto d-block text-center" alt="picture_url" style={{ width: 200, height: 200 }} />
-                </div>
-              </td> */}
+            <tr className = "align-middle" key={service.id}>
+              <td>{String(service.VIP)}</td>
+              <td>{service.customer_name }</td>
+              <td>{service.date_time }</td>
+              <td>{service.description }</td>
+              <td>{service.model }</td>
+              <td>{service.make }</td>
+              <td>{service.year }</td>
+              <td>{service.color }</td>
+              <td>{service.technician.name }</td>
+              <td>{service.VIN }</td>
               <td>
-              <button className="btn btn-primary m-2" onClick={()=> {handleDelete(appointment.id)}}>Delete</button>
+              <button className="btn btn-primary m-2" onClick={()=> {handleDelete(service.id)}}>Delete</button>
+              <button className="btn btn-primary m-2">Completed</button>
               </td>
             </tr>
-          );
-        })}
+          )}
+        )}
           </tbody>
         </table>
       )

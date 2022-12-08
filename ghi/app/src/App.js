@@ -13,7 +13,7 @@ function App() {
       <Nav />
       <div className="container">
         <Routes>
-          <Route path="/" element={<MainPage />} />
+          <Route path="/" element={<MainPage/>} />
           <Route path="service/new" element={<ServiceAppointmentForm/>}/>
           <Route path="service" element={<ServiceList/>}/>
           <Route path="customers/new" element={<CustomerForm/>}/>

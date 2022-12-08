@@ -3,7 +3,6 @@ from django.http import JsonResponse
 from django.views.decorators.http import require_http_methods
 import json
 from .encoders import (
-    AutomobileVOEncoder,
     SalesPersonEncoder,
     CustomerEncoder,
     SalesRecordEncoder,
@@ -25,16 +24,27 @@ def api_sales_records(request, sales_person_employee_number=None):
     else:
         content = json.loads(request.body)
         try:
-
-            name = content["sales_person"]
-            name = SalesPerson.objects.get(name=name)
-            content["sales_person"] = name
-            name = content["customer"]
-            name =Customer.objects.get(name=name)
-            content["customer"] = name
-            vin = content["vin"]
-            vin = AutomobileVO.objects.get(vin=vin)
-            content["vin"] = vin
+            sales_person = SalesPerson.objects.get(name=content["sales_person"])
+            content["sales_person"] = sales_person
+        except SalesPerson.DoesNotExist:
+            response = JsonResponse(
+                {"message": "sales person does not exist"}
+            )
+        try:
+            customer =Customer.objects.get(name=content["customer"])
+            content["customer"] = customer
+        except Customer.DoesNotExist:
+            response = JsonResponse(
+                {"message": "customer does not exist"}
+            )
+        try:
+            automobile = AutomobileVO.objects.get(vin=content["automobile"])
+            content["automobile"] = automobile
+        except AutomobileVO.DoesNotExist:
+            response = JsonResponse(
+                {"message": "automovile does not exist"}
+            )
+        try:
             sales_record = SalesRecord.objects.create(**content)
             return JsonResponse(
                 sales_record,
@@ -43,7 +53,7 @@ def api_sales_records(request, sales_person_employee_number=None):
             )
         except:
             response = JsonResponse(
-                {"message": "Could not create the automobile"}
+                {"message": "Could not create the sales record"}
             )
             response.status_code = 400
             return response
