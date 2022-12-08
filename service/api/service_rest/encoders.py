@@ -1,15 +1,15 @@
 from common.json import ModelEncoder
-from .models import SalesRecordVO, AutomobileVO, ServiceAppointment,Technician
+from .models import ServiceAppointment,Technician, AutomobileVO
 
 # Create your views here.
-class SalesRecordVOEncoder(ModelEncoder):
-    model = SalesRecordVO
-    properties = [
-        "price",
-        "sales_person",
-        "customer",
-        "vin"
-    ]
+# class SalesRecordVOEncoder(ModelEncoder):
+#     model = SalesRecordVO
+#     properties = [
+#         "price",
+#         "sales_person",
+#         "customer",
+#         "vin"
+#     ]
 
 class TechnicianEncoder(ModelEncoder):
     model = Technician
@@ -31,17 +31,19 @@ class ServiceAppointmentEncoder(ModelEncoder):
     model = ServiceAppointment
     properties = [
         "customer_name",
-        "date_time",
         "description",
-        "VIP_treatment",
+        "date_time",
         "technician",
-        "sales_record",
-        "automobile"
+        "VIP",
+        "VIN",
+        "model",
+        "make",
+        "color",
+        "year"
+
     ]
 
     encoders = {
-        "technician": TechnicianEncoder,
-        "sales_record": SalesRecordVOEncoder,
-        "automobile": AutomobileVOEncoder,
-
+        "technician": TechnicianEncoder(),
+        # "automobile": AutomobileVOEncoder(),
     }
