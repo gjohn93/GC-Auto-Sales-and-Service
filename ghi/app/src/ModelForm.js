@@ -42,7 +42,6 @@ class ModelForm extends React.Component {
             name: '',
             pictureUrl: '',
             manufacturer_id: '',
-            manufacturer: '',
           };
           this.setState(cleared);
           //loadData()
@@ -90,10 +89,10 @@ class ModelForm extends React.Component {
                 </div>
                 <select onChange={this.handleManufacturerChange} required id="manufacturer_id" name= "manufacturer_id" className="form-select" value={this.state.manufacturer_id}>
                   <option value="">Choose a manufacturer</option>
-                  {this.state.manufacturers.map(manufacturerId => {
+                  {this.state.manufacturers.map(manufacturer_id => {
                     return (
-                    <option key={manufacturerId.id} value={manufacturerId.id}>
-                        {manufacturerId.name}
+                    <option key={manufacturer_id.id} value={manufacturer_id.id}>
+                        {manufacturer_id.name}
                     </option>
                     );
                   })}

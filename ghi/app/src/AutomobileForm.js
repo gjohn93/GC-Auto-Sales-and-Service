@@ -12,7 +12,7 @@ class AutomobileForm extends React.Component {
         };
         this.handleColorChange = this.handleColorChange.bind(this);
         this.handleYearChange = this.handleYearChange.bind(this);
-        this.handleVinChange = this.handlevinChange.bind(this);
+        this.handleVinChange = this.handleVinChange.bind(this);
         this.handleModelChange = this.handleModelChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
     }
@@ -40,7 +40,6 @@ class AutomobileForm extends React.Component {
             year: '',
             vin: '',
             model_id: '',
-            model: '',
           };
           this.setState(cleared);
           //loadData()
@@ -60,7 +59,7 @@ class AutomobileForm extends React.Component {
     }
     handleModelChange(event) {
         const value = event.target.value;
-        this.setState({model: value})
+        this.setState({model_id: value})
     }
 
     async componentDidMount() {
@@ -84,22 +83,22 @@ class AutomobileForm extends React.Component {
             <form onSubmit={this.handleSubmit} id="create-hat-form">
               <div className="form-floating mb-3">
                 <input onChange={this.handleColorChange} placeholder="color" required type="text" name="color" id="color" className="form-control" value={this.state.color}/>
-                <label htmlFor="name">Name</label>
+                <label htmlFor="name">Color</label>
                 </div>
                 <div className="form-floating mb-3">
                 <input onChange={this.handleYearChange} placeholder="year" required type="year" name="year" id="year" className="form-control" value={this.state.year}/>
-                <label htmlFor="picture_url">Picture</label>
+                <label htmlFor="picture_url">Year</label>
                 </div>
                 <div className="form-floating mb-3">
                 <input onChange={this.handleVinChange} placeholder="vin" required type="vin" name="vin" id="vin" className="form-control" value={this.state.vin}/>
-                <label htmlFor="picture_url">Picture</label>
+                <label htmlFor="picture_url">Vin</label>
                 </div>
                 <select onChange={this.handleModelChange} required id="model_id" name= "model_id" className="form-select" value={this.state.model_id}>
-                  <option value="">Choose a manufacturer</option>
-                  {this.state.models.map(modelId => {
+                  <option value="">Choose a model</option>
+                  {this.state.models.map(model_id => {
                     return (
-                    <option key={modelId.id} value={modelId.id}>
-                        {modelId.name}
+                    <option key={model_id.id} value={model_id.id}>
+                        {model_id.name}
                     </option>
                     );
                   })}
