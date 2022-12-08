@@ -9,7 +9,7 @@ sys.path.append("/service/api/")
 os.environ.setdefault("DJANGO_SETTINGS_MODULE", "service_project.settings")
 django.setup()
 
-from service_rest.models import AutomobileVO
+from service_rest.models import AutomobileVO, SalesRecordVO
 # Import models from service_rest, here.
 # from service_rest.models import Something
 def get_automobiles():

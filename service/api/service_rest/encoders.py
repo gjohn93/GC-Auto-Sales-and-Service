@@ -2,6 +2,7 @@ from common.json import ModelEncoder
 from .models import ServiceAppointment,Technician, AutomobileVO
 
 # Create your views here.
+
 # class SalesRecordVOEncoder(ModelEncoder):
 #     model = SalesRecordVO
 #     properties = [

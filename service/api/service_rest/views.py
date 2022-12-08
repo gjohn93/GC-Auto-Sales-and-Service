@@ -44,9 +44,12 @@ def api_technician(request, id):
         )
 
 @require_http_methods(["GET","POST"])
-def api_service_appointments(request):
+def api_service_appointments(request, vin=None):
     if request.method == "GET":
-        service_appointment = ServiceAppointment.objects.all()
+        if vin is not None:
+            service_appointment = ServiceAppointment.objects.filter(VIN=vin)
+        else:
+            service_appointment = ServiceAppointment.objects.all()
         return JsonResponse(
             {"service_appointment":service_appointment},
             encoder = ServiceAppointmentEncoder,
@@ -55,15 +58,21 @@ def api_service_appointments(request):
     else:
         content = json.loads(request.body)
         try:
-            technician = Technician.objects.get(employee_number = content["technician"])
+            technician = Technician.objects.get(employee_number=content["technician"])
             content["technician"] = technician
         except Technician.DoesNotExist:
             return JsonResponse(
                 {"Note":"Technician employee number invalid. Please enter correct employee number"},
                 status=400,
             )
-        if AutomobileVO.objects.get(vin = content["vin"]):
-            content["VIP"] = "True"
+
+    try:
+        bool = AutomobileVO.objects.get(vin=content["VIN"])
+        if bool:
+            content["VIP"] = True
+    except AutomobileVO.DoesNotExist:
+        content["VIP"] = False
+
         service_appointment = ServiceAppointment.objects.create(**content)
         return JsonResponse(
             service_appointment,
@@ -85,6 +94,29 @@ def api_service_appointment(request, id):
             return JsonResponse(
                 {"Note": "Invalid appointment id number. Please enter a correct number"}, status=400
             )
-    if request.method == "DELETE":
+    elif request.method == "DELETE":
         try:
-            service_appointment
+            service_appointment = ServiceAppointment.objects.get(id=id)
+            service_appointment.delete()
+            return JsonResponse(
+                service_appointment,
+                encoder=ServiceAppointmentEncoder,
+                safe=False,
+            )
+        except ServiceAppointment.DoesNotExist:
+            return JsonResponse({"message": "Does not exist"})
+    else:
+        content = json.loads(request.body)
+        try:
+            if "technician" in content:
+                technician = Technician.objects.get(employee_number=content["technician"])
+                content["technician"] = technician
+        except Technician.DoesNotExist:
+            return JsonResponse({"message":"Invalid technician id"}, status=400)
+
+        ServiceAppointment.objects.filter(id=id).update(**content)
+
+        service_appointment = ServiceAppointment.objects.get(id=id)
+        return JsonResponse(
+            service_appointment, encoder= ServiceAppointmentEncoder, safe=False
+        )
