@@ -38,7 +38,6 @@ class Customer(models.Model):
 
 class SalesRecord(models.Model):
     price = models.DecimalField(max_digits=10, decimal_places=2)
-
     sales_person = models.ForeignKey(
         SalesPerson,
         related_name="sales_record",

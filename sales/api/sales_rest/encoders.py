@@ -30,10 +30,10 @@ class SalesRecordEncoder(ModelEncoder):
         "sales_person",
         "customer",
         "price",
-        "vin",
+        "automobile",
     ]
     encoders = {
         "sales_person": SalesPersonEncoder(),
         "customer": CustomerEncoder(),
-        "vin": AutomobileVOEncoder(),
+        "automobile": AutomobileVOEncoder(),
     }

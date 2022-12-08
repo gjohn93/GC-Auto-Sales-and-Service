@@ -18,6 +18,7 @@ class VehicleModelEncoder(ModelEncoder):
         "name",
         "picture_url",
         "manufacturer",
+        "manufacturer_id"
     ]
     encoders = {
         "manufacturer": ManufacturerEncoder(),
