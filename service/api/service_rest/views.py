@@ -66,12 +66,11 @@ def api_service_appointments(request, vin=None):
                 status=400,
             )
 
-    try:
-        bool = AutomobileVO.objects.get(vin=content["VIN"])
-        if bool:
-            content["VIP"] = True
-    except AutomobileVO.DoesNotExist:
-        content["VIP"] = False
+        try:
+            if AutomobileVO.objects.get(vin=content["VIN"]) is not None:
+                content["VIP"] = True
+        except AutomobileVO.DoesNotExist:
+            content["VIP"] = False
 
         service_appointment = ServiceAppointment.objects.create(**content)
         return JsonResponse(
