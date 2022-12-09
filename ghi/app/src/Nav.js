@@ -33,10 +33,19 @@ function Nav() {
               <NavLink className="nav-link" to="/customers/new">New Customers</NavLink>
             </li>
             <li className="nav-item">
+              <NavLink className="nav-link" to="/manufacturers/">Manufacturers</NavLink>
+            </li>
+            <li className="nav-item">
               <NavLink className="nav-link" to="/manufacturers/new">New Manufacturers</NavLink>
             </li>
             <li className="nav-item">
+              <NavLink className="nav-link" to="/models/">Models</NavLink>
+            </li>
+            <li className="nav-item">
               <NavLink className="nav-link" to="/models/new">New Model</NavLink>
+            </li>
+            <li className="nav-item">
+              <NavLink className="nav-link" to="/automobiles/">Automobile</NavLink>
             </li>
             <li className="nav-item">
               <NavLink className="nav-link" to="/automobiles/new">New Automobile</NavLink>
@@ -47,9 +56,9 @@ function Nav() {
             <li className="nav-item">
               <NavLink className="nav-link" to="/sales_records/new">New Sales Records</NavLink>
             </li>
-            <li className="nav-item">
+            {/* <li className="nav-item">
               <NavLink className="nav-link" to="/inventory_list">Inventory List</NavLink>
-            </li>
+            </li> */}
           </ul>
         </div>
       {/* </div> */}
