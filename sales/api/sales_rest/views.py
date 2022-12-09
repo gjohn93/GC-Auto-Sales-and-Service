@@ -23,6 +23,15 @@ def api_sales_records(request, sales_person_employee_number=None):
         )
     else:
         content = json.loads(request.body)
+
+        # automobiles = SalesRecord.objects.values_list("automobile")
+        # print(automobiles)
+        # for automobile in automobiles:
+        #     if automobile["vin"] == content["vin"]:
+        #         response = JsonResponse(
+        #             {"message": "This VIN has alreay been sold."}
+        #     )
+
         try:
             sales_person = SalesPerson.objects.get(name=content["sales_person"])
             content["sales_person"] = sales_person
@@ -42,8 +51,10 @@ def api_sales_records(request, sales_person_employee_number=None):
             content["automobile"] = automobile
         except AutomobileVO.DoesNotExist:
             response = JsonResponse(
-                {"message": "automovile does not exist"}
+                {"message": "automobile does not exist"}
             )
+
+
         try:
             sales_record = SalesRecord.objects.create(**content)
             return JsonResponse(
@@ -56,7 +67,7 @@ def api_sales_records(request, sales_person_employee_number=None):
                 {"message": "Could not create the sales record"}
             )
             response.status_code = 400
-            return response
+        return response
 
 @require_http_methods(["GET", "POST"])
 def api_customers(request):
