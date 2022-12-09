@@ -2,21 +2,15 @@ import React from 'react';
 //import loadData from "./index"
 
 class ModelForm extends React.Component {
-    constructor(props) {
-        super(props)
-        this.state = {
+      state = {
             name: '',
             pictureUrl: '',
             //manufacturer_id: '',
             manufacturers: []
         };
-        this.handleNameChange = this.handleNameChange.bind(this);
-        this.handlePictureUrlChange = this.handlePictureUrlChange.bind(this);
-        this.handleManufacturerChange = this.handleManufacturerChange.bind(this);
-        this.handleSubmit = this.handleSubmit.bind(this);
-    }
 
-    async handleSubmit(event) {
+
+    handleSubmit = async (event) =>{
         event.preventDefault();
         const data = {...this.state};
         data.picture_url = data.pictureUrl;
@@ -47,15 +41,15 @@ class ModelForm extends React.Component {
           //loadData()
         }
       }
-    handleNameChange(event) {
+    handleNameChange = (event) => {
         const value = event.target.value;
         this.setState({name: value})
     }
-    handlePictureUrlChange(event) {
+    handlePictureUrlChange = (event) => {
         const value = event.target.value;
         this.setState({pictureUrl: value})
     }
-    handleManufacturerChange(event) {
+    handleManufacturerChange = (event) => {
         const value = event.target.value;
         this.setState({manufacturer_id: value})
     }

@@ -2,19 +2,14 @@ import React from 'react';
 //import loadData from "./index"
 
 class ManufacturerForm extends React.Component {
-    constructor(props) {
-        super(props)
-        this.state = {
+      state = {
             name: '',
         };
-        this.handleNameChange = this.handleNameChange.bind(this);
-        this.handleSubmit = this.handleSubmit.bind(this);
-    }
 
-    async handleSubmit(event) {
+
+    handleSubmit = async (event) => {
         event.preventDefault();
         const data = {...this.state};
-        console.log(data);
 
         const manufacturerUrl = 'http://localhost:8100/api/manufacturers/';
         const fetchConfig = {
@@ -34,22 +29,15 @@ class ManufacturerForm extends React.Component {
           this.setState(cleared);
           //loadData()
         }
+        else{
+          console.log("an error has occured")
+        }
       }
-    handleNameChange(event) {
+    handleNameChange = (event) => {
         const value = event.target.value;
         this.setState({name: value})
     }
 
-    // async componentDidMount() {
-    //     const url = 'http://localhost:8100/api/locations/';
-
-    //     const response = await fetch(url);
-
-    //     if (response.ok) {
-    //       const data = await response.json();
-    //         this.setState({locations: data.locations})
-    //      }
-    //     }
 
     render() {
         return (

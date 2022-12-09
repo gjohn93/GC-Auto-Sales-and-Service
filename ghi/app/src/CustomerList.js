@@ -36,15 +36,15 @@ import './index.css';
 
 
 
-function CustomerList(props) {
-  console.log(props)
+function CustomerList() {
+  console.log()
   const [customers, setCustomers] = useState([])
 
 
   const getData = async () => {
     const resp = await fetch('http://localhost:8090/api/customers/')
     const data = await resp.json()
-    setCustomers(data)
+    setCustomers(data.customers)
   }
 
   const handleDelete = async (id) => {
@@ -70,7 +70,7 @@ function CustomerList(props) {
           </tr>
         </thead>
         <tbody className='text-center'>
-          {props.customers?.map(customer => {
+          {customers?.map(customer => {
             return (
               <tr className='align-middle' key={customer.id}>
                 <td>{ customer.name }</td>

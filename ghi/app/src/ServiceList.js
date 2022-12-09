@@ -2,6 +2,7 @@ import {useState, useEffect} from 'react';
 
 function ServiceList() {
   const [service_app, setServiceAppointment] = useState([])
+  const [searchInput, setSearchInput] = useState("")
 
   const getData = async () => {
     const resp = await fetch('http://localhost:8080/api/service_appointments/')
@@ -18,6 +19,16 @@ function ServiceList() {
     window.location = "/service"
   }
 
+  const handleChange = (e) => {
+    e.preventDefault();
+    setSearchInput(e.target.value);
+  };
+
+  if (searchInput.length > 0) {
+      service_app.filter((appointment) => {
+      return appointment.VIN.match(searchInput);
+  });
+  }
   const vinData = async (VIN) => {
     const vinResp = await fetch(`http://localhost:8080/api/service_appointments/${VIN}`)
     const vdata = await vinResp.json()
@@ -31,6 +42,9 @@ function ServiceList() {
 
 
   return (
+    <main>
+    <div><input type="search" placeholder="Search here" onChange={handleChange} value={searchInput} /></div>
+    <div>
         <table className="table table-hover table-striped">
           <thead className= "text-center">
             <tr>
@@ -71,6 +85,8 @@ function ServiceList() {
         )}
           </tbody>
         </table>
+        </div>
+        </main>
       )
 }
 

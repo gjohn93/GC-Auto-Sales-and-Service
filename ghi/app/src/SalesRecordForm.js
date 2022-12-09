@@ -2,9 +2,7 @@ import React from 'react';
 //import loadData from "./index"
 
 class SalesRecordForm extends React.Component {
-    constructor(props) {
-        super(props)
-        this.state = {
+            state = {
             price: '',
             customer: '',
             sales_person: '',
@@ -13,14 +11,9 @@ class SalesRecordForm extends React.Component {
             sales_persons: [],
             automobiles: []
         };
-        this.handlePriceChange = this.handlePriceChange.bind(this);
-        this.handleCustomerChange = this.handleCustomerChange.bind(this);
-        this.handleSalesPersonChange = this.handleSalesPersonChange.bind(this);
-        this.handleAutomobileChange = this.handleAutomobileChange.bind(this);
-        this.handleSubmit = this.handleSubmit.bind(this);
-    }
 
-    async handleSubmit(event) {
+
+    handleSubmit = async (event) => {
         event.preventDefault();
         const data = {...this.state};
         //data.sales_persons = data.salesPersons;
@@ -50,25 +43,28 @@ class SalesRecordForm extends React.Component {
           this.setState(cleared);
           //loadData()
         }
+        else{
+          console.log("customer: this is not working")
+        }
       }
-    handlePriceChange(event) {
+    handlePriceChange = (event) => {
         const value = event.target.value;
         this.setState({price: value})
     }
-    handleAutomobileChange(event) {
+    handleAutomobileChange = (event) => {
         const value = event.target.value;
         this.setState({automobile: value})
     }
-    handleCustomerChange(event) {
+    handleCustomerChange = (event) => {
         const value = event.target.value;
         this.setState({customer: value})
     }
-    handleSalesPersonChange(event) {
+    handleSalesPersonChange = (event) =>{
         const value = event.target.value;
         this.setState({sales_person: value})
     }
 
-    async componentDidMount() {
+   componentDidMount = async (event) => {
         const url1 = 'http://localhost:8100/api/automobiles/';
         const url2 = 'http://localhost:8090/api/customers/';
         const url3 = 'http://localhost:8090/api/sales_persons/';
@@ -127,7 +123,7 @@ class SalesRecordForm extends React.Component {
                   <option value="">Choose a customer</option>
                   {this.state.customers.map(customer => {
                     return (
-                    <option key={customer.name} value={customer.name}>
+                    <option key={customer.id} value={customer.name}>
                         {customer.name}
                     </option>
                     );

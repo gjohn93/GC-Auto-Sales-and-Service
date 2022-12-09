@@ -15,7 +15,7 @@ function Nav() {
               <NavLink className="nav-link" aria-current="page" to="/">Home</NavLink>
           </li>
 
-          <li class="nav-item dropdown">
+          <li className="nav-item dropdown">
           <NavLink className="nav-link dropdown-toggle" to="/service/new" id="navbarDropdownMenuLink" role="button"
           data-mdb-toggle="dropdown" aria-expanded="false">
           Service
@@ -33,10 +33,19 @@ function Nav() {
               <NavLink className="nav-link" to="/customers/new">Customers</NavLink>
             </li>
             <li className="nav-item">
+              <NavLink className="nav-link" to="/manufacturers/">Manufacturers</NavLink>
+            </li>
+            <li className="nav-item">
               <NavLink className="nav-link" to="/manufacturers/new">New Manufacturers</NavLink>
             </li>
             <li className="nav-item">
+              <NavLink className="nav-link" to="/models/">Models</NavLink>
+            </li>
+            <li className="nav-item">
               <NavLink className="nav-link" to="/models/new">New Model</NavLink>
+            </li>
+            <li className="nav-item">
+              <NavLink className="nav-link" to="/automobiles/">Automobile</NavLink>
             </li>
             <li className="nav-item">
               <NavLink className="nav-link" to="/automobiles/new">New Automobile</NavLink>
@@ -47,9 +56,9 @@ function Nav() {
             <li className="nav-item">
               <NavLink className="nav-link" to="/sales_records/new">New Sales Records</NavLink>
             </li>
-            <li className="nav-item">
+            {/* <li className="nav-item">
               <NavLink className="nav-link" to="/inventory_list">Inventory List</NavLink>
-            </li>
+            </li> */}
           </ul>
         </div>
       {/* </div> */}
