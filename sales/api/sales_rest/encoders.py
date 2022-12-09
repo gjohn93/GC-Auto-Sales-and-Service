@@ -7,6 +7,7 @@ class AutomobileVOEncoder(ModelEncoder):
         "vin",
         "color",
         "year",
+        "sold"
     ]
 
 class SalesPersonEncoder(ModelEncoder):
