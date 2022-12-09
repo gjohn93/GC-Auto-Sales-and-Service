@@ -4,47 +4,16 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import App from './App';
 import './index.css';
-// const root = ReactDOM.createRoot(document.getElementById('root'));
-// root.render(
-//   <React.StrictMode>
-//     <App />
-//   </React.StrictMode>
-// );
-// async function loadData() {
-//     const customersResponse = await fetch('http://localhost:8090/api/customers/');
-//     console.log(customersResponse)
 
 
-//     if (customersResponse.ok) {
-//       const customersData = await customersResponse.json();
-//       console.log(customersData)
-
-//       root.render(
-//         <React.StrictMode>
-//           <App customers={customersData.customers}/>
-//         </React.StrictMode>
-//        )} else {
-//       console.error(customersResponse);
-//     }
-//   }
-
-//   loadData()
-
-  //export default loadData
-
-
-
-
-
-function CustomerList(props) {
-  console.log(props)
+function CustomerList() {
   const [customers, setCustomers] = useState([])
 
 
   const getData = async () => {
     const resp = await fetch('http://localhost:8090/api/customers/')
     const data = await resp.json()
-    setCustomers(data)
+    setCustomers(data.customers)
   }
 
   const handleDelete = async (id) => {
@@ -70,7 +39,7 @@ function CustomerList(props) {
           </tr>
         </thead>
         <tbody className='text-center'>
-          {props.customers?.map(customer => {
+          {customers?.map(customer => {
             return (
               <tr className='align-middle' key={customer.id}>
                 <td>{ customer.name }</td>

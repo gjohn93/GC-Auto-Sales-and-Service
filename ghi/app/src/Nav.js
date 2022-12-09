@@ -15,7 +15,7 @@ function Nav() {
               <NavLink className="nav-link" aria-current="page" to="/">Home</NavLink>
           </li>
 
-          <li class="nav-item dropdown">
+          <li className="nav-item dropdown">
           <NavLink className="nav-link dropdown-toggle" to="/service/new" id="navbarDropdownMenuLink" role="button"
           data-mdb-toggle="dropdown" aria-expanded="false">
           Service
@@ -30,7 +30,7 @@ function Nav() {
             </ul>
           </li>
             <li className="nav-item">
-              <NavLink className="nav-link" to="/customers/new">Customers</NavLink>
+              <NavLink className="nav-link" to="/customers/new">New Customers</NavLink>
             </li>
             <li className="nav-item">
               <NavLink className="nav-link" to="/manufacturers/new">New Manufacturers</NavLink>

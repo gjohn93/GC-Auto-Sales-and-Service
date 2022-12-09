@@ -53,6 +53,7 @@ class SalesRecord(models.Model):
         AutomobileVO,
         related_name="sales_record",
         on_delete=models.PROTECT,
+        #unique=True
     )
 
     def get_api_url(self):
