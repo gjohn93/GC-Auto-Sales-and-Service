@@ -19,6 +19,24 @@ function ServiceList() {
     getData()
   }
 
+  const dt = (dt) => {
+     let afternoon
+     let after12_digit
+     let datet = dt.slice(0,-9).split(" ")
+     let date = datet[0].split('-')
+     if (Number(datet[1].slice(0,2)) >= 12){
+        after12_digit = Number(datet[1].slice(0,2))-12
+        afternoon= `${after12_digit}:${datet[1].slice(3,5)}`
+     }
+     if (after12_digit > 9){
+     return `${date[1]}/${date[2]}/${date[0]} ${afternoon} PM`}
+     else if (after12_digit){
+      return `${date[1]}/${date[2]}/${date[0]} 0${afternoon} PM`}
+     else{
+      return `${date[1]}/${date[2]}/${date[0]} ${datet[1]} AM`
+     }
+  }
+
   const handleFieldChange = (e) => {
     e.preventDefault();
     setFieldInput(e.target.value);
@@ -47,7 +65,7 @@ function ServiceList() {
         <option value="str_VIP">VIP</option>
         <option value="technician_name">Technician</option>
         <option value="customer_name">Customer Name</option>
-        <option value="date_time">Date/Time</option>
+        <option value="{service.dateTime}">Date/Time</option>
         <option value="model">Model</option>
         <option value="description">Description</option>
       </select>
@@ -78,7 +96,7 @@ function ServiceList() {
             <tr className = "align-middle" key={service.id}>
               <td>{String(service.VIP)}</td>
               <td>{service.customer_name }</td>
-              <td>{service.date_time }</td>
+              <td>{dt(service.dateTime)}</td>
               <td>{service.description }</td>
               <td>{service.model }</td>
               <td>{service.make }</td>
