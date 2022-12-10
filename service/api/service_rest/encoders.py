@@ -44,6 +44,12 @@ class ServiceAppointmentEncoder(ModelEncoder):
         "id"
 
     ]
+    def get_extra_data(self, o):
+        return {"technician_name": o.technician.name}
+
+    def get_extra_data(self,o):
+        return {"str_VIP": str(o.VIP).lower()}
+
 
     encoders = {
         "technician": TechnicianEncoder(),

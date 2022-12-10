@@ -24,14 +24,6 @@ def api_sales_records(request, sales_person_employee_number=None):
     else:
         content = json.loads(request.body)
 
-        # automobiles = SalesRecord.objects.values_list("automobile")
-        # print(automobiles)
-        # for automobile in automobiles:
-        #     if automobile["vin"] == content["vin"]:
-        #         response = JsonResponse(
-        #             {"message": "This VIN has alreay been sold."}
-        #     )
-
         try:
             sales_person = SalesPerson.objects.get(name=content["sales_person"])
             content["sales_person"] = sales_person
@@ -53,6 +45,13 @@ def api_sales_records(request, sales_person_employee_number=None):
             response = JsonResponse(
                 {"message": "automobile does not exist"}
             )
+
+
+        new_vin = SalesRecord.objects.filter(automobile__vin=content["automobile"])
+        if new_vin is not None:
+            response= JsonResponse({"message": "This VIN has already been purchased"})
+            response.status_code = 400
+            return response
 
 
         try:

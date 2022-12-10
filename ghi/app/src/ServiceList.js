@@ -17,7 +17,6 @@ function ServiceList() {
     const resp = await fetch(`http://localhost:8080/api/service_appointment/${id}`, { method:"DELETE"})
     const data = await resp.json()
     getData()
-    window.location = "/service"
   }
 
   const handleFieldChange = (e) => {
@@ -44,14 +43,17 @@ function ServiceList() {
       <h3>Filter</h3>
       <div className='search-wrapper'>
       <select onChange={handleFieldChange}>
-        <option value="VIN"></option>
-        <option value="Date"></option>
-        <option value="Time"></option>
-        <option value="Automobile"></option>
+        <option value="VIN">VIN</option>
+        <option value="str_VIP">VIP</option>
+        <option value="technician_name">Technician</option>
+        <option value="customer_name">Customer Name</option>
+        <option value="date_time">Date/Time</option>
+        <option value="model">Model</option>
+        <option value="description">Description</option>
       </select>
-        <input id="searchBar" onChange = {handleFilterChange}type="search" placeholder="Search here"/>
-        <button className = "btn btn-primary m-2" onClick={getFilteredList()}>Filter </button>
+        <input id="searchBar" onChange ={handleFilterChange} type="search" placeholder="Search here"/>
       </div>
+    <h3>Service List</h3>
     <div>
         <table className="table table-hover table-striped">
           <thead className= "text-center">
@@ -70,8 +72,8 @@ function ServiceList() {
             </tr>
           </thead>
           <tbody className= "text-center">
-          {
-          service_app?.map(service=>{
+
+          {getFilteredList().map(service=>{
           return (
             <tr className = "align-middle" key={service.id}>
               <td>{String(service.VIP)}</td>
@@ -85,8 +87,8 @@ function ServiceList() {
               <td>{service.technician.name }</td>
               <td>{service.VIN }</td>
               <td>
-              <button className="btn btn-primary m-2" onClick={()=> {handleDelete(service.id)}}>Delete</button>
-              <button className="btn btn-primary m-2">Completed</button>
+              <button className="btn btn-danger m-2" onClick={()=> {handleDelete(service.id)}}>Delete</button>
+              <button className="btn btn-success m-2"onClick={()=> {handleDelete(service.id)}}>Completed</button>
               </td>
             </tr>
           )}
