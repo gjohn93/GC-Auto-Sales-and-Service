@@ -15,6 +15,7 @@ import SalesRecordList from './SalesRecordList';
 import AutomobileList from './AutomobileList'
 import ModelList from './ModelList'
 import ManufacturerList from './ManufacturerList'
+import TechnicianForm from './TechnicianForm'
 
 function App() {
   return (
@@ -37,6 +38,7 @@ function App() {
           <Route path="automobiles" element={<AutomobileList/>}/>
           <Route path="manufacturers" element={<ManufacturerList/>}/>
           <Route path="models" element={<ModelList/>}/>
+          <Route path="technicians/new" element={<TechnicianForm/>}/>
         </Routes>
       </div>
     </BrowserRouter>

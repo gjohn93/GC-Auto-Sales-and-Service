@@ -43,7 +43,6 @@ return(
           <td>{automobile.model.name}</td>
           <td>
           <button className="btn btn-primary m-2" onClick={()=> {handleDeleteAutomobile(automobile.vin)}}>Delete</button>
-          <button className="btn btn-primary m-2">Edit</button>
           </td>
         </tr>
       )}

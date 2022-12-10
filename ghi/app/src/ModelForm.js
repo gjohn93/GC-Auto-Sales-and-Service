@@ -81,6 +81,7 @@ class ModelForm extends React.Component {
                 <input onChange={this.handlePictureUrlChange} placeholder="picture_url" required type="url" name="picture_url" id="picture_url" className="form-control" value={this.state.pictureUrl}/>
                 <label htmlFor="picture_url">Picture</label>
                 </div>
+                <div>
                 <select onChange={this.handleManufacturerChange} required id="manufacturer_id" name= "manufacturer_id" className="form-select" value={this.state.manufacturer_id}>
                   <option value="">Choose a manufacturer</option>
                   {this.state.manufacturers.map(manufacturer_id => {
@@ -91,7 +92,10 @@ class ModelForm extends React.Component {
                     );
                   })}
                 </select>
+                </div>
+                <div>
               <button className="btn btn-primary">Create</button>
+              </div>
             </form>
           </div>
         </div>

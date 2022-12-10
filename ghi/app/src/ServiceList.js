@@ -105,7 +105,7 @@ function ServiceList() {
               <td>{service.technician.name }</td>
               <td>{service.VIN }</td>
               <td>
-              <button className="btn btn-danger m-2" onClick={()=> {handleDelete(service.id)}}>Delete</button>
+              <button className="btn btn-danger m-2" onClick={()=> {handleDelete(service.id)}}>Cancel</button>
               <button className="btn btn-success m-2"onClick={()=> {handleDelete(service.id)}}>Completed</button>
               </td>
             </tr>

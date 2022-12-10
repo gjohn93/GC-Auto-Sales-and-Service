@@ -14,24 +14,32 @@ function Nav() {
           <li className="nav-item">
               <NavLink className="nav-link" aria-current="page" to="/">Home</NavLink>
           </li>
-
+        <div>
           <li className="nav-item dropdown">
-            <NavLink className="nav-link dropdown-toggle" to="/service/new" id="navbarDropdown" role="button"
+            <NavLink className="nav-link dropdown-toggle" to="/" id="navbarDropdown" role="button"
           data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           Service
             </NavLink>
-            </li>
+          </li>
           <div className="" aria-labelledby="navbarDropdown">
-            <li>
+            <li className="nav-item">
               <NavLink className="nav-link" to="/service/new">Service Appointment</NavLink>
             </li>
-            <li>
+            <li className="nav-item">
               <NavLink className="nav-link" to="/service">Service List</NavLink>
             </li>
-            </div>
             <li className="nav-item">
-              <NavLink className="nav-link" to="/customers/new">New Customers</NavLink>
+              <NavLink className="nav-link" to="/technicians/new">New Technicians</NavLink>
             </li>
+          </div>
+        </div>
+            <li className="nav-item dropdown">
+            <NavLink className="nav-link dropdown-toggle" to="/" id="navbarDropdown" role="button"
+          data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Inventory
+            </NavLink>
+            </li>
+            <div className="" aria-labelledby="navbarDropdown">
             <li className="nav-item">
               <NavLink className="nav-link" to="/manufacturers/">Manufacturers</NavLink>
             </li>
@@ -50,13 +58,27 @@ function Nav() {
             <li className="nav-item">
               <NavLink className="nav-link" to="/automobiles/new">New Automobile</NavLink>
             </li>
+            </div>
+            <li className="nav-item dropdown">
+            <NavLink className="nav-link dropdown-toggle" to="/" id="navbarDropdown" role="button"
+          data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Sales
+            </NavLink>
+            </li>
+            <div className="" aria-labelledby="navbarDropdown">
+            <li className="nav-item">
+              <NavLink className="nav-link" to="/customers/new">New Customers</NavLink>
+            </li>
             <li className="nav-item">
               <NavLink className="nav-link" to="/sales_persons/new">New Sales person</NavLink>
             </li>
             <li className="nav-item">
               <NavLink className="nav-link" to="/sales_records/new">New Sales Records</NavLink>
             </li>
-
+            <li className="nav-item">
+              <NavLink className="nav-link" to="/sales_records/">Sales Records</NavLink>
+            </li>
+            </div>
             {/* <li className="nav-item">
               <NavLink className="nav-link" to="/inventory_list">Inventory List</NavLink>
             </li> */}
