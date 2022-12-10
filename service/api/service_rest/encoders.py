@@ -40,7 +40,8 @@ class ServiceAppointmentEncoder(ModelEncoder):
         "model",
         "make",
         "color",
-        "year"
+        "year",
+        "id"
 
     ]
 
