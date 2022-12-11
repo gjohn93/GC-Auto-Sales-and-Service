@@ -32,7 +32,7 @@ function SalesRecordList() {
   useEffect(() => {getSalesPersons()}, [])
 
   const handleDelete = async (id) => {
-    const resp = await fetch(`http://localhost:8090/api/sales_records/${id}`, { method:"DELETE"})
+    const resp = await fetch(`http://localhost:8090/api/sales_record/${id}`, { method:"DELETE"})
     const data = await resp.json()
     getData()
     window.location = "/sales_records"

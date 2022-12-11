@@ -13,11 +13,12 @@ const getDataAutomobile = async () => {
 const getSalesRecordVins = async () => {
   const resp = await fetch('http://localhost:8090/api/sales_records/')
   const data = await resp.json()
-  console.log(data)
   setVins(data.sales_records)
-  console.log(sold_vins)
 }
-getSalesRecordVins()
+useEffect(()=> {
+  getSalesRecordVins();
+}, [])
+
 // const unsoldCars = () => {
 
 //   return automobiles.filter((automobile) => automobiles.includes()  )
@@ -32,7 +33,7 @@ const handleDeleteAutomobile = async (vin) => {
   useEffect(()=> {
     getDataAutomobile();
   }, [])
-
+console.log(automobiles,sold_vins)
 return(
     <div>
       <h3 className = "text-center">Automobiles</h3>

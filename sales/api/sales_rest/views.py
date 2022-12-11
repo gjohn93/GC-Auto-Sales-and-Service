@@ -47,15 +47,8 @@ def api_sales_records(request, sales_person_employee_number=None):
             )
 
         new_vin = SalesRecord.objects.filter(automobile__vin=content["automobile"])
-        if new_vin is not None:
-            return JsonResponse({"message": "This VIN has already been purchased"})
-
-
-        new_vin = SalesRecord.objects.filter(automobile__vin=content["automobile"])
         if new_vin:
-            response= JsonResponse({"message": "This VIN has already been purchased"})
-            response.status_code = 400
-            return response
+            return JsonResponse({"message": "This VIN has already been purchased"})
 
 
         try:
