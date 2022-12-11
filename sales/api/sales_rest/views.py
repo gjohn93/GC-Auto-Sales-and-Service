@@ -8,7 +8,7 @@ from .encoders import (
     SalesRecordEncoder,
 )
 from .models import AutomobileVO, SalesPerson, Customer, SalesRecord
-# Create your views here.
+
 
 @require_http_methods(["GET", "POST"])
 def api_sales_records(request, sales_person_employee_number=None):
