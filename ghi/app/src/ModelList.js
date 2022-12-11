@@ -41,7 +41,6 @@ useEffect(()=> {
             <td> <img src ={model.picture_url} style={{ width: 200, height: 200 }}/></td>
             <td>
             <button className="btn btn-primary m-2" onClick={()=> {handleDeleteModel(model.id)}}>Delete</button>
-            <button className="btn btn-primary m-2">Edit</button>
             </td>
           </tr>
         )}

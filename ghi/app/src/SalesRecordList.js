@@ -2,12 +2,14 @@ import { redirect } from 'react-router-dom'
 import {useState, useEffect} from 'react';
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import App from './App';
 import './index.css';
+import SalesPersonForm from './SalesPersonForm';
 
 
 function SalesRecordList() {
   const [salesRecords, setSalesRecords] = useState([])
+  const [sales_person, setSalesPerson] = useState([])
+  const[filter_person, setFilterPerson] = useState('')
 
 
   const getData = async () => {
@@ -15,6 +17,19 @@ function SalesRecordList() {
     const data = await resp.json()
     setSalesRecords(data.sales_records)
   }
+  useEffect(()=> {
+    getData();
+  }, [])
+
+
+
+  const getSalesPersons = async () => {
+    const url = await fetch('http://localhost:8090/api/sales_persons/')
+    const data = await url.json()
+    setSalesPerson(data.sales_persons)
+  }
+
+  useEffect(() => {getSalesPersons()}, [])
 
   const handleDelete = async (id) => {
     const resp = await fetch(`http://localhost:8090/api/sales_records/${id}`, { method:"DELETE"})
@@ -23,11 +38,36 @@ function SalesRecordList() {
     window.location = "/sales_records"
   }
 
-  useEffect(()=> {
-    getData();
-  }, [])
+  const handleSalesPersonChange = (e) => {
+    setFilterPerson(e.target.value)
+    console.log(sales_person)
+  }
 
-    return(
+  const getFilteredList = () => {
+    if (filter_person !== ""){
+      return salesRecords.filter((salesRecord) => salesRecord["sales_person"]["name"].includes(filter_person))
+      }
+    else{
+      return salesRecords
+    }
+  }
+
+  return(
+      <main>
+        <div>
+          <h3>Filter by Sales Person</h3>
+          <select onChange={handleSalesPersonChange} className = "form-select">
+            <option value = "">Choose a sales person</option>
+              {sales_person.map(salesperson => {
+              return (
+                <option key={salesperson.id} value={salesperson.name}>
+                  {salesperson.name}
+                </option>
+              )})}
+          </select>
+        </div>
+        <div>
+        <h3>Sales Records</h3>
         <table className="table table-hover table-striped">
         <thead className='text-center'>
           <tr>
@@ -39,7 +79,7 @@ function SalesRecordList() {
           </tr>
         </thead>
         <tbody className='text-center'>
-          {salesRecords?.map(salesRecord => {
+          {getFilteredList().map(salesRecord => {
             return (
               <tr className='align-middle' key={salesRecord.id}>
                 <td>{ salesRecord.price }</td>
@@ -54,6 +94,8 @@ function SalesRecordList() {
           })}
         </tbody>
       </table>
+      </div>
+      </main>
     );
 }
 

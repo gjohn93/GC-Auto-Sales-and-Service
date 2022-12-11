@@ -2,12 +2,26 @@ import {useState, useEffect} from 'react';
 
 export default function AutomobileList(){
 const [automobiles, setAutomobiles] = useState([])
+const [sold_vins, setVins] = useState([])
 
 const getDataAutomobile = async () => {
     const resp = await fetch('http://localhost:8100/api/automobiles/')
     const data = await resp.json()
     setAutomobiles(data.autos)
 }
+
+const getSalesRecordVins = async () => {
+  const resp = await fetch('http://localhost:8090/api/sales_records/')
+  const data = await resp.json()
+  console.log(data)
+  setVins(data.sales_records)
+  console.log(sold_vins)
+}
+getSalesRecordVins()
+// const unsoldCars = () => {
+
+//   return automobiles.filter((automobile) => automobiles.includes()  )
+// }
 
 const handleDeleteAutomobile = async (vin) => {
     const resp = await fetch(`http://localhost:8100/api/automobiles/${vin}`, { method:"DELETE"})
@@ -43,7 +57,6 @@ return(
           <td>{automobile.model.name}</td>
           <td>
           <button className="btn btn-primary m-2" onClick={()=> {handleDeleteAutomobile(automobile.vin)}}>Delete</button>
-          <button className="btn btn-primary m-2">Edit</button>
           </td>
         </tr>
       )}

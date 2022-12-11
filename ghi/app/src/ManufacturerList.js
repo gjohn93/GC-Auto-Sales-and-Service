@@ -21,7 +21,7 @@ export default function ManufacturerList(){
 
 return(
     <div>
-        <h1> Inventory List</h1>
+
         <h3 className = "text-center">Manufacturers</h3>
         <table className="table table-hover table-striped">
           <thead className= "text-center thead-light">
@@ -38,7 +38,6 @@ return(
               <td>{manufacturer.name}</td>
               <td>
               <button className="btn btn-primary m-2 float-right" onClick={()=> {handleDeleteMFG(manufacturer.id)}}>Delete</button>
-              <button className="btn btn-primary m-2 float-right">Edit</button>
               </td>
             </tr>
           )}

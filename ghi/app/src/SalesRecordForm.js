@@ -44,7 +44,7 @@ class SalesRecordForm extends React.Component {
           //loadData()
         }
         else{
-          console.log("customer: this is not working")
+          console.log("Message: Unable to complete")
         }
       }
     handlePriceChange = (event) => {
