@@ -8,7 +8,7 @@ from .encoders import (
     SalesRecordEncoder,
 )
 from .models import AutomobileVO, SalesPerson, Customer, SalesRecord
-# Create your views here.
+
 
 @require_http_methods(["GET", "POST"])
 def api_sales_records(request, sales_person_employee_number=None):
@@ -48,22 +48,22 @@ def api_sales_records(request, sales_person_employee_number=None):
 
         new_vin = SalesRecord.objects.filter(automobile__vin=content["automobile"])
         if new_vin:
-            return JsonResponse({"message": "This VIN has already been purchased"})
+            return JsonResponse({"message": "This VIN has already been purchased"}, status=400)
 
-
-        try:
-            sales_record = SalesRecord.objects.create(**content)
-            return JsonResponse(
-                sales_record,
-                encoder=SalesRecordEncoder,
-                safe=False,
-            )
-        except:
-            response = JsonResponse(
-                {"message": "Could not create the sales record"}
-            )
-            response.status_code = 400
-        return response
+        else:
+            try:
+                sales_record = SalesRecord.objects.create(**content)
+                return JsonResponse(
+                    sales_record,
+                    encoder=SalesRecordEncoder,
+                    safe=False,
+                )
+            except:
+                response = JsonResponse(
+                    {"message": "Could not create the sales record"}
+                )
+                response.status_code = 400
+            return response
 
 @require_http_methods(["DELETE", "GET", "PUT"])
 def api_sales_record(request, id):
