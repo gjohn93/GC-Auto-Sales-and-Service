@@ -39,6 +39,7 @@ function SalesRecordList() {
   }
 
   const handleSalesPersonChange = (e) => {
+    e.preventDefault();
     setFilterPerson(e.target.value)
     console.log(sales_person)
   }

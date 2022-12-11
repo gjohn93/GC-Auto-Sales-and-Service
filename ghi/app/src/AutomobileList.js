@@ -8,6 +8,7 @@ const getDataAutomobile = async () => {
     const resp = await fetch('http://localhost:8100/api/automobiles/')
     const data = await resp.json()
     setAutomobiles(data.autos)
+
 }
 
 const getSalesRecordVins = async () => {
