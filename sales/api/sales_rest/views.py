@@ -54,6 +54,10 @@ def api_sales_records(request, sales_person_employee_number=None):
                 {"message": "automobile does not exist"}
             )
 
+        new_vin = SalesRecord.objects.filter(automobile__vin=content["automobile"])
+        if new_vin is not None:
+            return JsonResponse({"message": "This VIN has already been purchased"})
+
 
         try:
             sales_record = SalesRecord.objects.create(**content)
