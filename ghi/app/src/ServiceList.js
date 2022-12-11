@@ -65,7 +65,7 @@ function ServiceList() {
         <option value="str_VIP">VIP</option>
         <option value="technician_name">Technician</option>
         <option value="customer_name">Customer Name</option>
-        <option value="{service.dateTime}">Date/Time</option>
+        {/* <option value="{service.dateTime}">Date/Time</option> */}
         <option value="model">Model</option>
         <option value="description">Description</option>
       </select>
