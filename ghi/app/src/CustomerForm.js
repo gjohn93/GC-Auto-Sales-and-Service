@@ -1,5 +1,4 @@
 import React from 'react';
-//import loadData from "./index"
 
 export default class CustomerForm extends React.Component {
         state = {

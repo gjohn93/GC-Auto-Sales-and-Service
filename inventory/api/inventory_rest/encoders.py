@@ -13,13 +13,7 @@ class ManufacturerEncoder(ModelEncoder):
 
 class VehicleModelEncoder(ModelEncoder):
     model = VehicleModel
-    properties = [
-        "id",
-        "name",
-        "picture_url",
-        "manufacturer",
-        "manufacturer_id"
-    ]
+    properties = ["id", "name", "picture_url", "manufacturer", "manufacturer_id"]
     encoders = {
         "manufacturer": ManufacturerEncoder(),
     }

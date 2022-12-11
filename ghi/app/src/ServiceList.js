@@ -19,24 +19,6 @@ function ServiceList() {
     getData()
   }
 
-  const dt = (dt) => {
-     let afternoon
-     let after12_digit
-     let datet = dt.slice(0,-9).split(" ")
-     let date = datet[0].split('-')
-     if (Number(datet[1].slice(0,2)) >= 12){
-        after12_digit = Number(datet[1].slice(0,2))-12
-        afternoon= `${after12_digit}:${datet[1].slice(3,5)}`
-     }
-     if (after12_digit > 9){
-     return `${date[1]}/${date[2]}/${date[0]} ${afternoon} PM`}
-     else if (after12_digit){
-      return `${date[1]}/${date[2]}/${date[0]} 0${afternoon} PM`}
-     else{
-      return `${date[1]}/${date[2]}/${date[0]} ${datet[1]} AM`
-     }
-  }
-
   const handleFieldChange = (e) => {
     e.preventDefault();
     setFieldInput(e.target.value);
@@ -62,6 +44,8 @@ function ServiceList() {
       <div className='search-wrapper'>
       <select onChange={handleFieldChange}>
         <option value="VIN">VIN</option>
+        <option value="date">Date</option>
+        <option value="time">Time</option>
         <option value="str_VIP">VIP</option>
         <option value="technician_name">Technician</option>
         <option value="customer_name">Customer Name</option>
@@ -77,7 +61,8 @@ function ServiceList() {
             <tr>
               <th>VIP</th>
               <th>Customer Name</th>
-              <th>Date/Time</th>
+              <th>Date</th>
+              <th>Time</th>
               <th>Description</th>
               <th>Model</th>
               <th>Make</th>
@@ -95,8 +80,9 @@ function ServiceList() {
             <tr className = "align-middle" key={service.id}>
               <td>{String(service.VIP)}</td>
               <td>{service.customer_name }</td>
-              <td>{dt(service.dateTime)}</td>
-              <td>{service.description }</td>
+              <td>{service.date}</td>
+              <td>{service.time}</td>
+              <td>{service.description}</td>
               <td>{service.model }</td>
               <td>{service.make }</td>
               <td>{service.year }</td>

@@ -7,13 +7,18 @@ import django.db.models.deletion
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('service_rest', '0004_alter_technician_employee_number'),
+        ("service_rest", "0004_alter_technician_employee_number"),
     ]
 
     operations = [
         migrations.AlterField(
-            model_name='serviceappointment',
-            name='sales_record',
-            field=models.ForeignKey(null=True, on_delete=django.db.models.deletion.PROTECT, related_name='appointments', to='service_rest.salesrecordvo'),
+            model_name="serviceappointment",
+            name="sales_record",
+            field=models.ForeignKey(
+                null=True,
+                on_delete=django.db.models.deletion.PROTECT,
+                related_name="appointments",
+                to="service_rest.salesrecordvo",
+            ),
         ),
     ]

@@ -1,6 +1,5 @@
 import React from 'react';
 
-
 export default class SalesPersonForm extends React.Component {
   state = {
     name: '',

@@ -1,5 +1,4 @@
 import React from 'react';
-//import loadData from "./index"
 
 class ModelForm extends React.Component {
       state = {

@@ -9,7 +9,6 @@ import ModelForm from './ModelForm';
 import AutomobileForm from './AutomobileForm';
 import SalesPersonForm from './SalesPersonForm';
 import SalesRecordForm from './SalesRecordForm';
-import InventoryList from './InventoryList';
 import CustomerList from './CustomerList';
 import SalesRecordList from './SalesRecordList';
 import AutomobileList from './AutomobileList'
@@ -32,7 +31,6 @@ function App() {
           <Route path="automobiles/new" element={<AutomobileForm/>}/>
           <Route path="sales_persons/new" element={<SalesPersonForm/>}/>
           <Route path="sales_records/new" element={<SalesRecordForm/>}/>
-          {/* <Route path="inventory_list" element={<InventoryList/>}/> */}
           <Route path="customers" element={<CustomerList/>}/>
           <Route path="sales_records" element={<SalesRecordList/>}/>
           <Route path="automobiles" element={<AutomobileList/>}/>

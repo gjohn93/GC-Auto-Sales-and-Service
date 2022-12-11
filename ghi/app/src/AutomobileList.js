@@ -20,11 +20,6 @@ useEffect(()=> {
   getSalesRecordVins();
 }, [])
 
-// const unsoldCars = () => {
-
-//   return automobiles.filter((automobile) => automobiles.includes()  )
-// }
-
 const handleDeleteAutomobile = async (vin) => {
     const resp = await fetch(`http://localhost:8100/api/automobiles/${vin}`, { method:"DELETE"})
     const data = await resp.json()

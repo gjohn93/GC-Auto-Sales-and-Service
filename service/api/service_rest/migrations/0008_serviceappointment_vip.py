@@ -6,13 +6,13 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('service_rest', '0007_remove_serviceappointment_vip_treatment'),
+        ("service_rest", "0007_remove_serviceappointment_vip_treatment"),
     ]
 
     operations = [
         migrations.AddField(
-            model_name='serviceappointment',
-            name='VIP',
+            model_name="serviceappointment",
+            name="VIP",
             field=models.BooleanField(default=False),
         ),
     ]
