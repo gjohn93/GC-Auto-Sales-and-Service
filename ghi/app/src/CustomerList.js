@@ -1,4 +1,3 @@
-import { redirect } from 'react-router-dom'
 import {useState, useEffect} from 'react';
 import React from 'react';
 import './index.css';
@@ -18,7 +17,7 @@ function CustomerList() {
     const resp = await fetch(`http://localhost:8090/api/customers/${id}`, { method:"DELETE"})
     const data = await resp.json()
     getData()
-    redirect("/customers")
+    window.location = "/customers"
   }
 
   useEffect(()=> {

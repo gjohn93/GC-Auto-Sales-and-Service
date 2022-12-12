@@ -2,7 +2,6 @@ from django.db import models
 from django.urls import reverse
 
 
-# Create your models here.
 class AutomobileVO(models.Model):
     vin = models.CharField(max_length=17, unique=True)
     color = models.CharField(max_length=50)
@@ -33,7 +32,6 @@ class Customer(models.Model):
 
     def __str__(self):
         return f"{self.name}, {self.id}"
-
 
 
 class SalesRecord(models.Model):
