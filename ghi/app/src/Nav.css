@@ -1,4 +1,14 @@
 .nav-links {
-    color: darkgray;
+    color: #00d1cd;
     text-decoration: none;
+    font-weight: bold;
+}
+.dropdown-menu {
+    background-color: #6C757D;
+    border: none;
+    text-align: center;
+}
+.navbar-dark .navbar-nav .nav-link {
+    color: #00d1cd;
+    font-weight: bold;
 }

@@ -5,31 +5,31 @@ function Nav() {
   return (
     <nav className="navbar navbar-expand-lg navbar-dark bg-secondary">
       <div className="container-fluid">
-        <NavLink className="navbar-brand" to="/">CarCar</NavLink>
+        <NavLink className="navbar-brand" to="/">
+          <img src={"./gc-auto-sales-and-service-logo.png"} style={{ width: 150, height: 150 }}></img>
+        </NavLink>
         <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span className="navbar-toggler-icon"></span>
         </button>
         <div className="collapse navbar-collapse" id="navbarSupportedContent">
           <ul className="navbar-nav me-auto mb-2 mb-lg-0">
-          <li className="nav-item">
-              <NavLink className="nav-link" aria-current="page" to="/">Home</NavLink>
-          </li>
           <li className="nav-item dropdown">
             <a className="nav-link dropdown-toggle" data-bs-toggle="dropdown">Service</a>
-            <ul className='dropdown-menu'>
+            <ul className='dropdown-menu dropdown-menu-right' aria-labelledby="navbarDropdown">
             <li className="nav-item">
               <NavLink className="nav-links" to="/service/new">New Service Appointment</NavLink>
             </li>
             <li className="nav-item">
-              <NavLink className="nav-links" to="/service">Service List</NavLink>
+              <NavLink className="nav-links" to="/service">Service Appointments</NavLink>
             </li>
             <li className="nav-item">
               <NavLink className="nav-links" to="/technicians/new">New Technicians</NavLink>
             </li>
             </ul>
+            </li>
             <li className="nav-item dropdown">
             <a className="nav-link dropdown-toggle" data-bs-toggle="dropdown">Inventory</a>
-            <ul className='dropdown-menu'>
+            <ul className='dropdown-menu dropdown-menu-right' aria-labelledby="navbarDropdown">
             <li className="nav-item">
               <NavLink className="nav-links" to="/manufacturers/">Manufacturers</NavLink>
             </li>
@@ -49,11 +49,15 @@ function Nav() {
               <NavLink className="nav-links" to="/automobiles/new">New Automobile</NavLink>
             </li>
             </ul>
+            </li>
             <li className="nav-item dropdown">
             <a className="nav-link dropdown-toggle" data-bs-toggle="dropdown">Sales</a>
-            <ul className='dropdown-menu'>
+            <ul className='dropdown-menu dropdown-menu-right' aria-labelledby="navbarDropdown">
             <li className="nav-item">
               <NavLink className="nav-links" to="/customers/new">New Customer</NavLink>
+            </li>
+            <li className="nav-item">
+              <NavLink className="nav-links" to="/customers/">Customers</NavLink>
             </li>
             <li className="nav-item">
               <NavLink className="nav-links" to="/sales_persons/new">New Salesperson</NavLink>
@@ -66,8 +70,6 @@ function Nav() {
             </li>
             </ul>
             </li>
-            </li>
-        </li>
      </ul>
      </div>
      </div>

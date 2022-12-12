@@ -163,7 +163,7 @@ def api_customer(request, id):
         try:
             content = json.loads(request.body)
             customer = Customer.objects.get(id=id)
-            props = ["name", "address", "phone_number",]
+            props = ["name", "address", "phone_number", ]
             for prop in props:
                 if prop in content:
                     setattr(customer, prop, content[prop])
