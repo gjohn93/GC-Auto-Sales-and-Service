@@ -102,11 +102,18 @@ def api_service_appointments(request, vin=None):
                     content["VIP"] = True
             except AutomobileVO.DoesNotExist:
                 content["VIP"] = False
-        except ServiceAppointment.DoesNotExist:
+
             service_appointment = ServiceAppointment.objects.create(**content)
             return JsonResponse(
                 service_appointment, encoder=ServiceAppointmentEncoder, safe=False
             )
+        except ServiceAppointment.DoesNotExist:
+            return JsonResponse(
+                    {
+                        "Note":
+                        "Cannot create Service Record"
+                    },
+                    status=400,)
 
 
 @require_http_methods(["GET", "DELETE", "PUT"])
