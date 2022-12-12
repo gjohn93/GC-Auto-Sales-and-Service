@@ -29,6 +29,7 @@ useEffect(()=> {
           <tr>
             <th>Name</th>
             <th>Picture</th>
+            <th>Manufacturer</th>
             <th></th>
           </tr>
         </thead>
@@ -39,6 +40,7 @@ useEffect(()=> {
           <tr className = "align-middle" key={model.id}>
             <td>{model.name}</td>
             <td> <img src ={model.picture_url} style={{ width: 200, height: 200 }}/></td>
+            <td>{model.manufacturer.name}</td>
             <td>
             <button className="btn btn-primary m-2" onClick={()=> {handleDeleteModel(model.id)}}>Delete</button>
             </td>

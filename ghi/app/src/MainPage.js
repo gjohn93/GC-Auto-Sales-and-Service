@@ -14,6 +14,7 @@ function MainPage() {
          Sales or Service, we've got you covered!
         </p>
       </div>
+      </div>
     )
 }
 export default MainPage;

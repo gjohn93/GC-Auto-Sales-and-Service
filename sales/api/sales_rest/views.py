@@ -1,6 +1,4 @@
-from django.shortcuts import render
 from django.http import JsonResponse
-from django.core.serializers.json import DjangoJSONEncoder
 from django.views.decorators.http import require_http_methods
 import json
 from .encoders import (
@@ -57,7 +55,7 @@ def api_sales_records(request, sales_person_employee_number=None):
                     encoder=SalesRecordEncoder,
                     safe=False,
                 )
-            except:
+            except SalesRecord.DoesNotExist:
                 response = JsonResponse(
                     {"message": "Could not create the sales record"}
                 )
@@ -109,6 +107,7 @@ def api_sales_record(request, id):
             response.status_code = 404
             return response
 
+
 @require_http_methods(["GET"])
 def api_sold_automobiles(request):
     if request.method == "GET":
@@ -118,6 +117,7 @@ def api_sold_automobiles(request):
             encoder=SalesRecordEncoder,
         )
 
+
 @require_http_methods(["GET"])
 def api_available_automobiles(request):
     if request.method == "GET":
@@ -126,6 +126,7 @@ def api_available_automobiles(request):
             {"availAutos": availAutos},
             encoder=SalesRecordEncoder,
         )
+
 
 @require_http_methods(["GET", "POST"])
 def api_customers(request):
@@ -144,9 +145,9 @@ def api_customers(request):
                 encoder=CustomerEncoder,
                 safe=False,
             )
-        except:
+        except Customer.DoesNotExist:
             response = JsonResponse(
-                {"message": "Could not create the manufacturer"}
+                {"message": "Could not create the customer"}
             )
             response.status_code = 400
             return response
@@ -214,9 +215,9 @@ def api_sales_persons(request):
                 encoder=SalesPersonEncoder,
                 safe=False,
             )
-        except:
+        except SalesPerson.DoesNotExist:
             response = JsonResponse(
-                {"message": "Could not create the manufacturer"}
+                {"message": "Could not create the sales person"}
             )
             response.status_code = 400
             return response
