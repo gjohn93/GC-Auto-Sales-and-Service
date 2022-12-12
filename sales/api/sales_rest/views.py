@@ -31,7 +31,7 @@ def api_sales_records(request, sales_person_employee_number=None):
                 {"message": "sales person does not exist"}
             )
         try:
-            customer =Customer.objects.get(name=content["customer"])
+            customer = Customer.objects.get(name=content["customer"])
             content["customer"] = customer
         except Customer.DoesNotExist:
             response = JsonResponse(
@@ -62,6 +62,7 @@ def api_sales_records(request, sales_person_employee_number=None):
                 )
                 response.status_code = 400
             return response
+
 
 @require_http_methods(["DELETE", "GET", "PUT"])
 def api_sales_record(request, id):
@@ -107,6 +108,7 @@ def api_sales_record(request, id):
             response.status_code = 404
             return response
 
+
 @require_http_methods(["GET", "POST"])
 def api_customers(request):
     if request.method == "GET":
@@ -130,6 +132,7 @@ def api_customers(request):
             )
             response.status_code = 400
             return response
+
 
 @require_http_methods(["DELETE", "GET", "PUT"])
 def api_customer(request, id):
@@ -200,6 +203,7 @@ def api_sales_persons(request):
             response.status_code = 400
             return response
 
+
 @require_http_methods(["DELETE", "GET", "PUT"])
 def api_sales_person(request, id):
     if request.method == "GET":
@@ -229,7 +233,7 @@ def api_sales_person(request, id):
         try:
             content = json.loads(request.body)
             sales_person = SalesPerson.objects.get(id=id)
-            props = ["name", "employee_number",]
+            props = ["name", "employee_number", ]
             for prop in props:
                 if prop in content:
                     setattr(sales_person, prop, content[prop])

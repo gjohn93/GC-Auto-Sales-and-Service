@@ -1,5 +1,5 @@
 import { NavLink } from 'react-router-dom';
-//import './Nav.css'
+import "./Nav.css"
 
 function Nav() {
   return (
@@ -14,77 +14,63 @@ function Nav() {
           <li className="nav-item">
               <NavLink className="nav-link" aria-current="page" to="/">Home</NavLink>
           </li>
-        <div>
           <li className="nav-item dropdown">
-            <NavLink className="nav-link dropdown-toggle" to="/" id="navbarDropdown" role="button"
-          data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          Service
-            </NavLink>
-          </li>
-          <div className="" aria-labelledby="navbarDropdown">
+            <a className="nav-link dropdown-toggle" data-bs-toggle="dropdown">Service</a>
+            <ul className='dropdown-menu'>
             <li className="nav-item">
-              <NavLink className="nav-link" to="/service/new">Service Appointment</NavLink>
+              <NavLink className="nav-links" to="/service/new">New Service Appointment</NavLink>
             </li>
             <li className="nav-item">
-              <NavLink className="nav-link" to="/service">Service List</NavLink>
+              <NavLink className="nav-links" to="/service">Service List</NavLink>
             </li>
             <li className="nav-item">
-              <NavLink className="nav-link" to="/technicians/new">New Technicians</NavLink>
+              <NavLink className="nav-links" to="/technicians/new">New Technicians</NavLink>
             </li>
-          </div>
-        </div>
-            <li className="nav-item dropdown">
-            <NavLink className="nav-link dropdown-toggle" to="/" id="navbarDropdown" role="button"
-          data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          Inventory
-            </NavLink>
-            </li>
-            <div className="" aria-labelledby="navbarDropdown">
-            <li className="nav-item">
-              <NavLink className="nav-link" to="/manufacturers/">Manufacturers</NavLink>
-            </li>
-            <li className="nav-item">
-              <NavLink className="nav-link" to="/manufacturers/new">New Manufacturers</NavLink>
-            </li>
-            <li className="nav-item">
-              <NavLink className="nav-link" to="/models/">Models</NavLink>
-            </li>
-            <li className="nav-item">
-              <NavLink className="nav-link" to="/models/new">New Model</NavLink>
-            </li>
-            <li className="nav-item">
-              <NavLink className="nav-link" to="/automobiles/">Automobile</NavLink>
-            </li>
-            <li className="nav-item">
-              <NavLink className="nav-link" to="/automobiles/new">New Automobile</NavLink>
-            </li>
-            </div>
-            <li className="nav-item dropdown">
-            <NavLink className="nav-link dropdown-toggle" to="/" id="navbarDropdown" role="button"
-          data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          Sales
-            </NavLink>
-            </li>
-            <div className="" aria-labelledby="navbarDropdown">
-            <li className="nav-item">
-              <NavLink className="nav-link" to="/customers/new">New Customers</NavLink>
-            </li>
-            <li className="nav-item">
-              <NavLink className="nav-link" to="/sales_persons/new">New Sales person</NavLink>
-            </li>
-            <li className="nav-item">
-              <NavLink className="nav-link" to="/sales_records/new">New Sales Records</NavLink>
-            </li>
-            <li className="nav-item">
-              <NavLink className="nav-link" to="/sales_records/">Sales Records</NavLink>
-            </li>
-            </div>
-            {/* <li className="nav-item">
-              <NavLink className="nav-link" to="/inventory_list">Inventory List</NavLink>
-            </li> */}
             </ul>
-        </div>
-        </div>
+            <li className="nav-item dropdown">
+            <a className="nav-link dropdown-toggle" data-bs-toggle="dropdown">Inventory</a>
+            <ul className='dropdown-menu'>
+            <li className="nav-item">
+              <NavLink className="nav-links" to="/manufacturers/">Manufacturers</NavLink>
+            </li>
+            <li className="nav-item">
+              <NavLink className="nav-links" to="/manufacturers/new">New Manufacturer</NavLink>
+            </li>
+            <li className="nav-item">
+              <NavLink className="nav-links" to="/models/">Models</NavLink>
+            </li>
+            <li className="nav-item">
+              <NavLink className="nav-links" to="/models/new">New Model</NavLink>
+            </li>
+            <li className="nav-item">
+              <NavLink className="nav-links" to="/automobiles/">Automobiles</NavLink>
+            </li>
+            <li className="nav-item">
+              <NavLink className="nav-links" to="/automobiles/new">New Automobile</NavLink>
+            </li>
+            </ul>
+            <li className="nav-item dropdown">
+            <a className="nav-link dropdown-toggle" data-bs-toggle="dropdown">Sales</a>
+            <ul className='dropdown-menu'>
+            <li className="nav-item">
+              <NavLink className="nav-links" to="/customers/new">New Customer</NavLink>
+            </li>
+            <li className="nav-item">
+              <NavLink className="nav-links" to="/sales_persons/new">New Salesperson</NavLink>
+            </li>
+            <li className="nav-item">
+              <NavLink className="nav-links" to="/sales_records/new">New Sales Record</NavLink>
+            </li>
+            <li className="nav-item">
+              <NavLink className="nav-links" to="/sales_records/">Sales Records</NavLink>
+            </li>
+            </ul>
+            </li>
+            </li>
+        </li>
+     </ul>
+     </div>
+     </div>
     </nav>
   )
 }
