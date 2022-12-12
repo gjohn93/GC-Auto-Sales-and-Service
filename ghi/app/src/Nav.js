@@ -17,7 +17,7 @@ function Nav() {
             <a className="nav-link dropdown-toggle" data-bs-toggle="dropdown">Service</a>
             <ul className='dropdown-menu dropdown-menu-right' aria-labelledby="navbarDropdown">
             <li className="nav-item">
-              <NavLink className="nav-links" to="/service/new">New Service Appointment</NavLink>
+              <NavLink className="nav-links"  to="/service/new">New Service Appointment</NavLink>
             </li>
             <li className="nav-item">
               <NavLink className="nav-links" to="/service">Service Appointments</NavLink>
@@ -43,7 +43,7 @@ function Nav() {
               <NavLink className="nav-links" to="/models/new">New Model</NavLink>
             </li>
             <li className="nav-item">
-              <NavLink className="nav-links" to="/automobiles/">Automobiles</NavLink>
+              <NavLink className="nav-links" to="/automobiles/">Automobile Inventory</NavLink>
             </li>
             <li className="nav-item">
               <NavLink className="nav-links" to="/automobiles/new">New Automobile</NavLink>

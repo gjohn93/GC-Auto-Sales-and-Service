@@ -74,7 +74,7 @@ function InventoryList() {
               <td>{manufacturer.name}</td>
               <td>
               <button className="btn btn-primary m-2 float-right" onClick={()=> {handleDeleteMFG(manufacturer.id)}}>Delete</button>
-              <button className="btn btn-primary m-2 float-right">Edit</button>
+              <button className="btn btn-primary m-2 float-right">Purchase</button>
               </td>
             </tr>
           )}

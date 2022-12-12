@@ -95,7 +95,7 @@ class AutomobileForm extends React.Component {
                   return (
                   <option key={model_id.id} value={model_id.id}>
                       {model_id.name}
-                  </option>
+                </option>
                   );
                 })}
               </select>
@@ -104,8 +104,6 @@ class AutomobileForm extends React.Component {
         </div>
       </div>
     </div>
-      );
-  }
-  }
+  )}}
 
   export default AutomobileForm

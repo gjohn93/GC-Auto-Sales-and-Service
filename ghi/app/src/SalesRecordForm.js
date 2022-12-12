@@ -28,7 +28,6 @@ export default function SalesRecordForm(){
   const handleFormSubmit = async e => {
       e.preventDefault()
       const salesRecordFormUrl = `http://localhost:8090/api/sales_records/`;
-      console.log(formData)
       const fetchConfig = {
           method: 'post',
           body: JSON.stringify({

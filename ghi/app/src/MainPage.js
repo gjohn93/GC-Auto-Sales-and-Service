@@ -1,3 +1,5 @@
+import { NavLink } from 'react-router-dom';
+
 function MainPage() {
   return (
     <div className="px-4 py-5 my-5 text-center">
@@ -12,8 +14,6 @@ function MainPage() {
          Sales or Service, we've got you covered!
         </p>
       </div>
-    </div>
-  );
+    )
 }
-
 export default MainPage;
