@@ -17,7 +17,6 @@ const getSoldAutomobiles = async () => {
   setSoldAutomobiles(data.soldAutos)
 }
 
-
 const handleDeleteAutomobile = async (vin) => {
   const resp = await fetch(`http://localhost:8100/api/automobiles/${vin}`, { method:"DELETE"})
   const data = await resp.json()

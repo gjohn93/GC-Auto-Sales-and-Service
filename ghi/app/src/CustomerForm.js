@@ -1,11 +1,11 @@
 import React from 'react';
 
 export default class CustomerForm extends React.Component {
-        state = {
-          name: '',
-          address: '',
-          phone_number: '',
-        }
+  state = {
+    name: '',
+    address: '',
+    phone_number: '',
+  }
 
   handleNameChange = (event)=>{
     const value = event.target.value
@@ -76,6 +76,6 @@ render() {
     </div>
   </div>
 
-    );
+);
 }
 }

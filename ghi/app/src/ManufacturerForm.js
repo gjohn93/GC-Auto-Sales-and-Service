@@ -1,43 +1,41 @@
 import React from 'react';
 
 class ManufacturerForm extends React.Component {
-      state = {
-            name: '',
-        };
+  state = {
+        name: '',
+    };
 
 
-    handleSubmit = async (event) => {
-        event.preventDefault();
-        const data = {...this.state};
+  handleSubmit = async (event) => {
+    event.preventDefault();
+    const data = {...this.state};
 
-        const manufacturerUrl = 'http://localhost:8100/api/manufacturers/';
-        const fetchConfig = {
-          method: "post",
-          body: JSON.stringify(data),
-          headers: {
-            'Content-Type': 'application/json',
-          },
-        };
-        const response = await fetch(manufacturerUrl, fetchConfig);
-        if (response.ok) {
-          const newManufacturer = await response.json();
-          console.log(newManufacturer);
-          const cleared = {
-            name: '',
-          };
-          this.setState(cleared);
-          //loadData()
-        }
-        else{
-          console.log("an error has occured")
-        }
-      }
-    handleNameChange = (event) => {
-        const value = event.target.value;
-        this.setState({name: value})
+    const manufacturerUrl = 'http://localhost:8100/api/manufacturers/';
+    const fetchConfig = {
+      method: "post",
+      body: JSON.stringify(data),
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    };
+    const response = await fetch(manufacturerUrl, fetchConfig);
+    if (response.ok) {
+      const newManufacturer = await response.json();
+      console.log(newManufacturer);
+      const cleared = {
+        name: '',
+      };
+      this.setState(cleared);
+      //loadData()
     }
-
-
+    else{
+      console.log("an error has occured")
+    }
+  }
+  handleNameChange = (event) => {
+    const value = event.target.value;
+    this.setState({name: value})
+}
     render() {
         return (
 

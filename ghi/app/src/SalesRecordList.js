@@ -18,8 +18,6 @@ function SalesRecordList() {
     getData();
   }, [])
 
-
-
   const getSalesPersons = async () => {
     const url = await fetch('http://localhost:8090/api/sales_persons/')
     const data = await url.json()
