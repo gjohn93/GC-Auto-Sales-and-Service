@@ -35,7 +35,6 @@ def api_automobiles(request):
             response.status_code = 400
             return response
 
-
 @require_http_methods(["DELETE", "GET", "PUT"])
 def api_automobile(request, vin):
     if request.method == "GET":

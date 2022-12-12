@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from django.http import JsonResponse
+from django.core.serializers.json import DjangoJSONEncoder
 from django.views.decorators.http import require_http_methods
 import json
 from .encoders import (
@@ -108,6 +109,23 @@ def api_sales_record(request, id):
             response.status_code = 404
             return response
 
+@require_http_methods(["GET"])
+def api_sold_automobiles(request):
+    if request.method == "GET":
+        soldAutos = AutomobileVO.objects.filter(sales_record__isnull=False).values()
+        return JsonResponse(
+            {"soldAutos": soldAutos},
+            encoder=SalesRecordEncoder,
+        )
+
+@require_http_methods(["GET"])
+def api_available_automobiles(request):
+    if request.method == "GET":
+        availAutos = AutomobileVO.objects.filter(sales_record__isnull=True).values()
+        return JsonResponse(
+            {"availAutos": availAutos},
+            encoder=SalesRecordEncoder,
+        )
 
 @require_http_methods(["GET", "POST"])
 def api_customers(request):

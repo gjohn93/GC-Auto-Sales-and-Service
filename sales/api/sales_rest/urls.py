@@ -7,6 +7,8 @@ from .views import (
     api_sales_record,
     api_customer,
     api_sales_person,
+    api_sold_automobiles,
+    api_available_automobiles
 )
 
 urlpatterns = [
@@ -44,5 +46,15 @@ urlpatterns = [
         "sales_person/<int:id>/",
         api_sales_person,
         name="sales_person",
+    ),
+    path(
+        "sold_automobiles/",
+        api_sold_automobiles,
+        name="api_sold_automobiles",
+    ),
+    path(
+        "available_automobiles/",
+        api_available_automobiles,
+        name="api_available_automobiles",
     ),
 ]
