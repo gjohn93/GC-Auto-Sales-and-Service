@@ -27,8 +27,9 @@ function Nav() {
               <NavLink className="nav-links" to="/technicians/new">New Technicians</NavLink>
             </li>
             </ul>
+            </li>
             <li className="nav-item dropdown">
-            <a className="nav-link dropdown-toggle" data-bs-toggle="dropdown">Inventory</a>
+            <a className="nav-link dropdown-toggle" data-bs-toggle="dropdown">Available Inventory</a>
             <ul className='dropdown-menu'>
             <li className="nav-item">
               <NavLink className="nav-links" to="/manufacturers/">Manufacturers</NavLink>
@@ -49,11 +50,15 @@ function Nav() {
               <NavLink className="nav-links" to="/automobiles/new">New Automobile</NavLink>
             </li>
             </ul>
+            </li>
             <li className="nav-item dropdown">
             <a className="nav-link dropdown-toggle" data-bs-toggle="dropdown">Sales</a>
             <ul className='dropdown-menu'>
             <li className="nav-item">
               <NavLink className="nav-links" to="/customers/new">New Customer</NavLink>
+            </li>
+            <li className="nav-item">
+              <NavLink className="nav-links" to="/customers/">Customers</NavLink>
             </li>
             <li className="nav-item">
               <NavLink className="nav-links" to="/sales_persons/new">New Salesperson</NavLink>
@@ -66,8 +71,6 @@ function Nav() {
             </li>
             </ul>
             </li>
-            </li>
-        </li>
      </ul>
      </div>
      </div>
