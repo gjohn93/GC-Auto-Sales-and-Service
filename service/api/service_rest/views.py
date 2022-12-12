@@ -35,61 +35,78 @@ def api_technicians(request):
 @require_http_methods(["GET", "DELETE", "PUT"])
 def api_technician(request, id):
     if request.method == "GET":
-        technician = Technician.objects.get(employee_number=id)
-        return JsonResponse(
-            {"technician": technician},
-            encoder=TechnicianEncoder,
-            safe=False,
-            json_dumps_params=None,
-        )
+        try:
+            technician = Technician.objects.get(employee_number=id)
+            return JsonResponse(
+                {"technician": technician},
+                encoder=TechnicianEncoder,
+                safe=False,
+                json_dumps_params=None,
+            )
+        except Technician.DoesNotExist:
+            return JsonResponse(
+                {"message": "cannot create technician"}, status=400
+            )
     elif request.method == "DELETE":
-        count, _ = Technician.objects.filter(employee_number=id).delete()
-        return JsonResponse({"deleted": count > 0})
+        try:
+            count, _ = Technician.objects.filter(employee_number=id).delete()
+            return JsonResponse({"deleted": count > 0})
+        except Technician.DoesNotExist:
+            return JsonResponse(
+                {"message": "cannot delete technician"}, status=400
+            )
     else:
-        content = json.loads(request.body)
-        Technician.objects.filter(employee_number=id).update(**content)
-        technician = Technician.objects.get(employee_number=id)
-        return JsonResponse(technician, encoder=TechnicianEncoder, safe=False)
+        try:
+            content = json.loads(request.body)
+            Technician.objects.filter(employee_number=id).update(**content)
+            technician = Technician.objects.get(employee_number=id)
+            return JsonResponse(technician, encoder=TechnicianEncoder, safe=False)
+        except Technician.DoesNotExist:
+            return JsonResponse(
+                {"message": "cannot update technician"}, status=400
+            )
 
 
 @require_http_methods(["GET", "POST"])
 def api_service_appointments(request, vin=None):
     if request.method == "GET":
-        if vin is not None:
-            service_appointment = ServiceAppointment.objects.filter(VIN=vin)
-        else:
-            service_appointment = ServiceAppointment.objects.all()
-        return JsonResponse(
-            {"service_appointment": service_appointment},
-            encoder=ServiceAppointmentEncoder,
-            safe=False,
-        )
-    else:
-        content = json.loads(request.body)
         try:
-            technician = Technician.objects.get(employee_number=content["technician"])
-            content["technician"] = technician
-        except Technician.DoesNotExist:
+            if vin is not None:
+                service_appointment = ServiceAppointment.objects.filter(VIN=vin)
+            else:
+                service_appointment = ServiceAppointment.objects.all()
             return JsonResponse(
-                {
-                    "Note":
-                    "Technician employee number invalid. Please enter correct employee number"
-                },
-                status=400,
+                {"service_appointment": service_appointment},
+                encoder=ServiceAppointmentEncoder,
+                safe=False,
             )
-
+        except ServiceAppointment.DoesNotExist:
+            return JsonResponse(
+                {"message": "cannot get Service Appointment"}, status=400
+            )
+    else:
         try:
-            if AutomobileVO.objects.get(vin=content["VIN"]) is not None:
-                content["VIP"] = True
-        except AutomobileVO.DoesNotExist:
-            content["VIP"] = False
-
-        
-
-        service_appointment = ServiceAppointment.objects.create(**content)
-        return JsonResponse(
-            service_appointment, encoder=ServiceAppointmentEncoder, safe=False
-        )
+            content = json.loads(request.body)
+            try:
+                technician = Technician.objects.get(employee_number=content["technician"])
+                content["technician"] = technician
+            except Technician.DoesNotExist:
+                return JsonResponse(
+                    {
+                        "Note":
+                        "Technician employee number invalid. Please enter correct employee number"
+                    },
+                    status=400,)
+            try:
+                if AutomobileVO.objects.get(vin=content["VIN"]) is not None:
+                    content["VIP"] = True
+            except AutomobileVO.DoesNotExist:
+                content["VIP"] = False
+        except ServiceAppointment.DoesNotExist:
+            service_appointment = ServiceAppointment.objects.create(**content)
+            return JsonResponse(
+                service_appointment, encoder=ServiceAppointmentEncoder, safe=False
+            )
 
 
 @require_http_methods(["GET", "DELETE", "PUT"])
