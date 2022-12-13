@@ -8,6 +8,7 @@ class AutomobileVOEncoder(ModelEncoder):
         "vin",
         "color",
         "year",
+        "model",
     ]
 
 

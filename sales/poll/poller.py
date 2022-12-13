@@ -23,6 +23,7 @@ def get_automobiles():
             color=automobile["color"],
             year=automobile["year"],
             vin=automobile["vin"],
+            model=automobile["model"]["name"],
         )
 
 
