@@ -4,6 +4,8 @@ import { Link } from "react-router-dom";
 export default function AutomobileList() {
   const [avail_automobiles, setAvailAutomobiles] = useState([]);
   const [sold_automobiles, setSoldAutomobiles] = useState([]);
+  const [searchInput, setSearchInput] = useState("");
+  const [fieldInput, setFieldInput] = useState("vin");
 
   const getAvailableAutomobiles = async () => {
     const resp = await fetch(
@@ -27,6 +29,26 @@ export default function AutomobileList() {
     getAvailableAutomobiles();
   };
 
+  const handleFieldChange = (e) => {
+    e.preventDefault();
+    setFieldInput(e.target.value);
+  };
+
+  const handleFilterChange = (e) => {
+    e.preventDefault();
+    setSearchInput(e.target.value);
+  };
+
+  const getAvailFilteredList = () => {
+    console.log(avail_automobiles);
+    return avail_automobiles.filter((automobile) => automobile[fieldInput]);
+  }
+
+  const getSoldFilteredList = () => {
+    console.log(sold_automobiles)
+    return sold_automobiles.filter((automobile) => automobile[fieldInput]);
+  }
+
   useEffect(() => {
     getSoldAutomobiles();
   }, []);
@@ -38,6 +60,17 @@ export default function AutomobileList() {
 
   return (
     <main>
+      <h3>Filter</h3>
+        <div className='search-wrapper'>
+        <select onChange={handleFieldChange}>
+          <option value="vin">VIN</option>
+          <option value="year">Year</option>
+          <option value="model">Model</option>
+          <option value="color">Color</option>
+        </select>
+        <input id="searchBar" onChange ={handleFilterChange} type="search" placeholder="Search here"/>
+        </div>
+      <h3>Available List</h3>
       <div>
         <h3 className="text-center">Available Automobile Inventory</h3>
         <table className="table table-hover table-striped">
@@ -52,7 +85,7 @@ export default function AutomobileList() {
             </tr>
           </thead>
           <tbody className="text-center">
-            {avail_automobiles.map((automobile) => {
+            {getAvailFilteredList().map((automobile) => {
               return (
                 <tr className="align-middle" key={automobile.id}>
                   <td>{automobile.color}</td>
@@ -80,6 +113,17 @@ export default function AutomobileList() {
             })}
           </tbody>
         </table>
+        <h3>Filter</h3>
+          <div className='search-wrapper'>
+          <select onChange={handleFieldChange}>
+            <option value="vin">VIN</option>
+            <option value="year">Year</option>
+            <option value="model">Model</option>
+            <option value="color">Color</option>
+          </select>
+          <input id="searchBar" onChange ={handleFilterChange} type="search" placeholder="Search here"/>
+          </div>
+        <h3>Sold List</h3>
         <h3 className="text-center">Sold Automobile Inventory</h3>
         <table className="table table-hover table-striped">
           <thead className="text-center thead-light">
@@ -87,17 +131,19 @@ export default function AutomobileList() {
               <th>Color</th>
               <th>Year</th>
               <th>VIN</th>
+              <th>Model</th>
               <th>Actions</th>
               <th></th>
             </tr>
           </thead>
           <tbody className="text-center">
-            {sold_automobiles.map((automobile) => {
+            {getSoldFilteredList().map((automobile) => {
               return (
                 <tr className="align-middle" key={automobile.id}>
                   <td>{automobile.color}</td>
                   <td>{automobile.year}</td>
                   <td>{automobile.vin}</td>
+                  <td>{automobile.model.name}</td>
                   <td>
                     <Link to="/sales_records/" className="btn btn-primary m-2">
                       Sales Records
