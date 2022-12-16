@@ -1,5 +1,4 @@
 import { useState, useEffect } from "react";
-import "./activeServiceList.css";
 
 function ActiveServiceList() {
   let [service_app, setServiceAppointment] = useState([]);
@@ -108,7 +107,7 @@ function ActiveServiceList() {
       <div>
         <table className="table table-hover table-striped">
           <thead className="text-center">
-            <tr className="trhead">
+            <tr className="header">
               <th>VIP</th>
               <th>Customer Name</th>
               <th>Date</th>
@@ -167,7 +166,7 @@ function ActiveServiceList() {
         <div>
           <table className="table table-hover table-striped">
             <thead className="text-center">
-              <tr className="trhead">
+              <tr className="header">
                 <th>VIP</th>
                 <th>Customer Name</th>
                 <th>Date</th>

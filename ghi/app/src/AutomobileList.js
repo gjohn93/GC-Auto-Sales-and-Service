@@ -44,7 +44,7 @@ export default function AutomobileList() {
         <h3 className="text-center">Available Automobile Inventory</h3>
         <table className="table table-hover table-striped">
           <thead className="text-center thead-light">
-            <tr>
+            <tr className="header">
               <th>Color</th>
               <th>Year</th>
               <th>VIN</th>

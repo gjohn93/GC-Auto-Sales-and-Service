@@ -57,7 +57,7 @@ useEffect(() => {
       <div>
         <table className="table table-hover table-striped">
           <thead className="text-center">
-            <tr>
+            <tr className="header">
               <th>VIP</th>
               <th>Customer Name</th>
               <th>Date</th>
