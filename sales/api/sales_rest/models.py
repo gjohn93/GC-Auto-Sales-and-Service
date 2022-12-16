@@ -6,6 +6,7 @@ class AutomobileVO(models.Model):
     vin = models.CharField(max_length=17, unique=True)
     color = models.CharField(max_length=50)
     year = models.PositiveSmallIntegerField()
+    model = models.CharField(max_length=150, null=True)
 
     def __str__(self):
         return f"{self.vin}"

@@ -48,6 +48,7 @@ export default function AutomobileList() {
               <th>Color</th>
               <th>Year</th>
               <th>VIN</th>
+              <th>Model</th>
               <th>Actions</th>
               <th></th>
             </tr>
@@ -59,6 +60,7 @@ export default function AutomobileList() {
                   <td>{automobile.color}</td>
                   <td>{automobile.year}</td>
                   <td>{automobile.vin}</td>
+                  <td>{automobile.model}</td>
                   <td>
                     <Link
                       to="/sales_records/new"
@@ -87,6 +89,7 @@ export default function AutomobileList() {
               <th>Color</th>
               <th>Year</th>
               <th>VIN</th>
+              <th>Model</th>
               <th>Actions</th>
               <th></th>
             </tr>
@@ -98,6 +101,7 @@ export default function AutomobileList() {
                   <td>{automobile.color}</td>
                   <td>{automobile.year}</td>
                   <td>{automobile.vin}</td>
+                  <td>{automobile.model}</td>
                   <td>
                     <Link to="/sales_records/" className="btn btn-primary m-2">
                       Sales Records
