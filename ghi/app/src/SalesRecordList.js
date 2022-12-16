@@ -70,7 +70,7 @@ function SalesRecordList() {
         <h3>Sales Records</h3>
         <table className="table table-hover table-striped">
           <thead className="text-center">
-            <tr>
+            <tr className="header">
               <th>Price</th>
               <th>Automobile</th>
               <th>Sales Person</th>
