@@ -5,7 +5,7 @@ export default function AutomobileList() {
   const [avail_automobiles, setAvailAutomobiles] = useState([]);
   const [sold_automobiles, setSoldAutomobiles] = useState([]);
   const [searchInput, setSearchInput] = useState("");
-  const [fieldInput, setFieldInput] = useState("vin");
+  const [fieldInput, setFieldInput] = useState("model");
 
   const getAvailableAutomobiles = async () => {
     const resp = await fetch(
@@ -41,12 +41,12 @@ export default function AutomobileList() {
 
   const getAvailFilteredList = () => {
     console.log(avail_automobiles);
-    return avail_automobiles.filter((automobile) => automobile[fieldInput]);
+    return avail_automobiles.filter((automobile) => String((automobile[fieldInput])).toLowerCase().includes(searchInput.toLowerCase()));
   }
 
   const getSoldFilteredList = () => {
     console.log(sold_automobiles)
-    return sold_automobiles.filter((automobile) => automobile[fieldInput]);
+    return sold_automobiles.filter((automobile) => String((automobile[fieldInput])).toLowerCase().includes(searchInput.toLowerCase()));
   }
 
   useEffect(() => {
@@ -63,14 +63,14 @@ export default function AutomobileList() {
       <h3>Filter</h3>
         <div className='search-wrapper'>
         <select onChange={handleFieldChange}>
+          <option value="model">Model</option>
           <option value="vin">VIN</option>
           <option value="year">Year</option>
-          <option value="model">Model</option>
           <option value="color">Color</option>
         </select>
         <input id="searchBar" onChange ={handleFilterChange} type="search" placeholder="Search here"/>
         </div>
-      <h3>Available List</h3>
+      <h3></h3>
       <div>
         <h3 className="text-center">Available Automobile Inventory</h3>
         <table className="table table-hover table-striped">
@@ -113,17 +113,6 @@ export default function AutomobileList() {
             })}
           </tbody>
         </table>
-        <h3>Filter</h3>
-          <div className='search-wrapper'>
-          <select onChange={handleFieldChange}>
-            <option value="vin">VIN</option>
-            <option value="year">Year</option>
-            <option value="model">Model</option>
-            <option value="color">Color</option>
-          </select>
-          <input id="searchBar" onChange ={handleFilterChange} type="search" placeholder="Search here"/>
-          </div>
-        <h3>Sold List</h3>
         <h3 className="text-center">Sold Automobile Inventory</h3>
         <table className="table table-hover table-striped">
           <thead className="text-center thead-light">
@@ -143,7 +132,7 @@ export default function AutomobileList() {
                   <td>{automobile.color}</td>
                   <td>{automobile.year}</td>
                   <td>{automobile.vin}</td>
-                  <td>{automobile.model.name}</td>
+                  <td>{automobile.model}</td>
                   <td>
                     <Link to="/sales_records/" className="btn btn-primary m-2">
                       Sales Records

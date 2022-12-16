@@ -4,11 +4,12 @@
     font-weight: bold;
 }
 .dropdown-menu {
-    background-color: rgba(108,117,125,.85);
+    background-color: rgba(68,68,68,.95);
     border: none;
     text-align: center;
 }
 .navbar-dark .navbar-nav .nav-link {
-    color: #00d1cd;
+    color: #D3D3D3;
     font-weight: bold;
+    font-size: xx-large;
 }

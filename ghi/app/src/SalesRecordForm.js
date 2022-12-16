@@ -55,9 +55,9 @@ export default function SalesRecordForm() {
     setSalesPersons(data.sales_persons);
   };
   const getAutomobiles = async () => {
-    const url = await fetch("http://localhost:8100/api/automobiles/");
+    const url = await fetch("http://localhost:8090/api/available_automobiles/");
     const data = await url.json();
-    setAutomobiles(data.autos);
+    setAutomobiles(data.availAutos);
   };
 
   useEffect(() => {

@@ -17,6 +17,8 @@ function CustomerList() {
   }, [])
 
     return(
+      <div>
+        <h3 className = "text-center">Customers</h3>
         <table className="table table-hover table-striped">
         <thead className='text-center'>
           <tr>
@@ -37,6 +39,7 @@ function CustomerList() {
           })}
         </tbody>
       </table>
+      </div>
     );
 }
 
