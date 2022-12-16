@@ -4,7 +4,7 @@
     font-weight: bold;
 }
 .dropdown-menu {
-    background-color: #6C757D;
+    background-color: rgba(108,117,125,.95);
     border: none;
     text-align: center;
 }

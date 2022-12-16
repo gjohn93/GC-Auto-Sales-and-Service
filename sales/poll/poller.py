@@ -24,6 +24,14 @@ def get_automobiles():
             year=automobile["year"],
             vin=automobile["vin"],
         )
+    for automobile in AutomobileVO.objects.all():
+        is_present = False
+        for auto in content["autos"]:
+            if auto["vin"] == automobile.vin:
+                is_present = True
+            else:
+                automobile.delete()
+
 
 
 def poll():

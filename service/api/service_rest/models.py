@@ -1,5 +1,6 @@
 from django.db import models
 from django.urls import reverse
+from django.core.validators import MinLengthValidator
 
 # Create your models here.
 
@@ -41,11 +42,14 @@ class ServiceAppointment(models.Model):
     time = models.TimeField(null=True)
     description = models.TextField()
     VIP = models.BooleanField(default=False)
-    VIN = models.CharField(max_length=17)
+    VIN = models.CharField(max_length=17, validators=[MinLengthValidator(17)])
     model = models.CharField(max_length=150)
     make = models.CharField(max_length=150)
     color = models.CharField(max_length=100)
     year = models.SmallIntegerField()
+    completed = models.BooleanField(default=False)
+    in_progress = models.BooleanField(default=False)
+
 
     technician = models.ForeignKey(
         Technician,

@@ -27,6 +27,8 @@ class ServiceAppointmentEncoder(ModelEncoder):
         "make",
         "color",
         "year",
+        "completed",
+        "in_progress",
         "id",
     ]
 
