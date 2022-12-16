@@ -26,7 +26,7 @@ export default function ManufacturerList() {
       <h3 className="text-center">Manufacturers</h3>
       <table className="table table-hover table-striped">
         <thead className="text-center thead-light">
-          <tr>
+          <tr className="header">
             <th>Name</th>
             <th></th>
           </tr>

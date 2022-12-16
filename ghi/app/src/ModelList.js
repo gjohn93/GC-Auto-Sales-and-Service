@@ -26,7 +26,7 @@ export default function ModelList() {
       <h3 className="text-center">Models</h3>
       <table className="table table-hover table-striped">
         <thead className="text-center thead-light">
-          <tr>
+          <tr className="header">
             <th>Name</th>
             <th>Picture</th>
             <th>Manufactuer</th>

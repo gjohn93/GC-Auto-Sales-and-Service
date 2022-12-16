@@ -17,7 +17,7 @@ function CustomerList() {
   return (
     <table className="table table-hover table-striped">
       <thead className="text-center">
-        <tr>
+        <tr className="header">
           <th>Name</th>
           <th>Address</th>
           <th>Phone Number</th>
