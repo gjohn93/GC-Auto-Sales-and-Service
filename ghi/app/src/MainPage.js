@@ -13,7 +13,7 @@ function MainPage() {
       </h1>
       <div className="col-lg-6 mx-auto">
         <p className="lead mb-4">
-          Your #1 resource for all your automotive needs.
+          Your #1 resource for all your automotive needs!
         </p>
         <p className="lead mb-4">Sales or Service, we've got you covered!</p>
       </div>

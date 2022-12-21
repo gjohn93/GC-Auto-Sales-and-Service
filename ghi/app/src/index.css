@@ -9,7 +9,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background: no-repeat center center fixed;
+  background: url('/public/fast_car.gif') no-repeat center center fixed;
   -webkit-background-size:cover;
   -moz-background-size:cover;
   -o-background-size: cover;
@@ -21,30 +21,9 @@ main {
 }
 
 table {
-  opacity: 1.0;
-  background-color: white;
+  background-color: rgba(255, 255, 255, 0.8);
 }
 
-/* .hero {
-  position: relative;
-  height: 100vh;
-  width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.hero::before {
-  content: "";
-  background-image: url('/public/gc-auto-sales-and-service-logo.png');
-  background-size: cover;
-  position: absolute;
-  top: 0px;
-  right: 0px;
-  bottom: 0px;
-  left: 0px;
-  opacity: 0.6;
-} */
 
 tr:hover {background-color: rgb(0,209,205);}
 
