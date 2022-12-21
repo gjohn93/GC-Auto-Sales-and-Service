@@ -3,13 +3,18 @@
     text-decoration: none;
     font-weight: bold;
 }
+
+.navbar-dark .navbar-nav .nav-link:hover {
+    color: rgba(68,68,68);
+}
+
 .dropdown-menu {
-    background-color: rgba(68,68,68,.95);
+    background-color: rgba(234, 58, 101, 0.9);
     border: none;
     text-align: center;
 }
 .navbar-dark .navbar-nav .nav-link {
-    color: #D3D3D3;
+    color: #00d1cd;
     font-weight: bold;
     font-size: xx-large;
 }
