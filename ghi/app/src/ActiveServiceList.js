@@ -103,7 +103,8 @@ function ActiveServiceList() {
           placeholder="Search here"
         />
       </div>
-      <h3>Service in progress</h3>
+      <br></br>
+      <h3 className="text-center">Service in progress</h3>
       <div>
         <table className="table table-hover table-striped">
           <thead className="text-center">
@@ -162,7 +163,7 @@ function ActiveServiceList() {
         </table>
       </div>
       <div>
-        <h3>Waiting on service</h3>
+        <h3 className="text-center">Waiting on service</h3>
         <div>
           <table className="table table-hover table-striped">
             <thead className="text-center">

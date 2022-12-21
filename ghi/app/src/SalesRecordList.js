@@ -67,7 +67,7 @@ function SalesRecordList() {
         </select>
       </div>
       <div>
-        <h3>Sales Records</h3>
+        <h3 className="text-center">Sales Records</h3>
         <table className="table table-hover table-striped">
           <thead className="text-center">
             <tr className="header">

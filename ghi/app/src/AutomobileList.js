@@ -26,7 +26,6 @@ export default function AutomobileList() {
       method: "DELETE",
     });
     const data = await resp.json();
-    // getAvailableAutomobiles();
     setAvailAutomobiles(avail_automobiles.filter((auto) => auto.vin !== vin));
   };
 

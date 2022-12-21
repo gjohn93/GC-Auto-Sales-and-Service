@@ -53,7 +53,8 @@ useEffect(() => {
           placeholder="Search here"
         />
       </div>
-      <h3>Service History</h3>
+      <br></br>
+      <h3 className="text-center">Service History</h3>
       <div>
         <table className="table table-hover table-striped">
           <thead className="text-center">

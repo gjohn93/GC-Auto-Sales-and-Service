@@ -4,7 +4,7 @@ import "./Nav.css";
 function Nav() {
   return (
     <nav className="navbar navbar-expand-lg navbar-dark bg-muted">
-      <div className="container-fluid">
+      <div className="container-fluid nav-color">
         <NavLink className="navbar-brand" to="/">
           <img src= "/gc-auto-sales-and-service-logo.png" width= "150" height= "150"></img>
         </NavLink>

@@ -42,7 +42,7 @@ class ServiceAppointmentEncoder(ModelEncoder):
         t = int(time[0:2])
         if t > 12 and t - 12 >= 10:
             time = f"{t-12}:{time[3:5]} PM"
-        elif t > 12 and t - 12 > 9:
+        elif t > 12:
             time = f"0{t-12}:{time[3:5]} PM"
         elif t > 9:
             time = f"{t}:{time[3:5]} PM"
